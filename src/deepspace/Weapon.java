@@ -54,5 +54,5 @@ public class Weapon {
         else{ return DEFAULT_RETURN_VALUE; }
     }
     
-    
+    WeaponToUI getUIversion() { return new WeaponToUI(this); }
 }

@@ -33,7 +33,7 @@ class ShieldBooster {
         return boost; 
     }
     
-    public float getUses(){ 
+    public int getUses(){ 
         return uses; 
     }
     
@@ -48,6 +48,8 @@ class ShieldBooster {
        
         else{ return DEFAULT_RETURN_VALUE; }
     }
+    
+    ShieldToUI getUIversion() { return new ShieldToUI(this); }
 }
 
 
