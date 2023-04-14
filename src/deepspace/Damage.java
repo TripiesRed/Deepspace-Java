@@ -25,17 +25,65 @@ public class Damage {
     Damage (ArrayList<WeaponType> wl, int s){
         weapons = wl;
         nShields = s;
+        nWeapons = wl.size();
     }
     
-    Damage 
+    Damage (Damage d){
+        this(d.weapons, d.nShields);
+    }
     
     //Métodos Visibilidad de Paquete
-    
+    DamageToUI getToUiversion(){ return new DamageToUI(this); }
     
     //Métodos Privados
-    
+    int arrayContainsType (ArrayList<Weapon> w, WeaponType t) {
+        
+        int index = -1;
+        
+        if(w.contains(t)) index = w.indexOf(t);
+        
+        return index;
+    }
     
     //Métodods Públicos
+    Damage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
+        
+        int newNWeapons, newNShields;
+        
+        //Ajustamos nWeapons
+        if(nWeapons > w.size()) newNWeapons = w.size();
+        
+        else newNWeapons = nWeapons;
+       
+        //Ajustamos nShields
+        if(nShields > s.size()) newNShields = s.size();
+        
+        else newNShields = nShields;
+        
+        return new Damage(newNWeapons, newNShields);
+    }
     
+    void discardWeapon (Weapon w){
+        
+        if(!weapons.isEmpty()) weapons.remove(w.getType());
+        
+        else 
+            if(nWeapons > 0) nWeapons--;
+        
+    }
+    
+    void discardShieldBooster (){
+        
+        if(nShields > 0) nShields--;
+        
+    }
+    
+    boolean hasNoEffect (){ return nShields == 0 && nWeapons == 0; }
+    
+    int getNShields (){ return nShields; }
+    
+    int getNWeapons (){ return nWeapons; }
+    
+    ArrayList<WeaponType> getWeapons () { return weapons; }
     
 }
