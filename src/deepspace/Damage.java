@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Damage {
     
-    //Instancias
+    //Atributos
     private int nShields;
     private int nWeapons;
     private ArrayList<WeaponType> weapons;

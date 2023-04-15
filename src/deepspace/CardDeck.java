@@ -5,15 +5,19 @@
  */
 package deepspace;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Profe
  * @param <T>
  */
-class CardDeck<T extends Copyable<T>> {    
+class CardDeck<T> {    
     private ArrayList<T> cards=new ArrayList<>();
     private boolean ready;
     private int count;
@@ -43,7 +47,17 @@ class CardDeck<T extends Copyable<T>> {
             count=0;
         }
         
-        return card.copy();
+        T t=null;
+        try {
+            Class<T> clazz = (Class<T>) card.getClass();
+            Constructor<T> c= clazz.getDeclaredConstructor(clazz);
+            t = c.newInstance( card );
+        } catch (ReflectiveOperationException ex) {
+            Logger.getLogger(CardDeck.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return t;
+        
+        //return card;
     }
     
     private void shuffle() {
