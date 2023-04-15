@@ -33,7 +33,7 @@ public class Damage {
     }
     
     //Métodos Visibilidad de Paquete
-    DamageToUI getToUiversion(){ return new DamageToUI(this); }
+    DamageToUI getUIversion(){ return new DamageToUI(this); }
     
     //Métodos Privados
     int arrayContainsType (ArrayList<Weapon> w, WeaponType t) {
