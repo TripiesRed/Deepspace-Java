@@ -36,6 +36,6 @@ class Loot {
     
     public int getNMedals(){ return nMedals; }
     
-    LootToUI getUIVersion() { return new LootToUI(this); }
+    LootToUI getUIversion() { return new LootToUI(this); }
     
 }
