@@ -185,5 +185,64 @@ public class SpaceStation {
             }
         }
     }
+    
+    /****************************************************************/
+    /* fire(): float
+    
+    -Funcionalidad: Realiza el disparo de una nave SpaceStation. Se calcula  
+        con el producto de multiplicar los potenciadores de las armas de 
+        la nave y la potencia de disparo.
+    
+    -Parámetros: void
+    
+    -Return: La potencia de disparo. 
+    
+    */
+    /****************************************************************/
+    float fire(){
+       
+        int size = weapons.size();
+        float factor = 1;
+        
+        for(int i = 0; i < size; i++){
+            
+            Weapon w = weapons.get(i);
+            factor *= w.useIt();      
+            
+        }
+        
+        return ammoPower*factor;
+        
+    }
+    
+    
+    /****************************************************************/
+    /* protection(): float
+    
+    -Funcionalidad: Utiliza el escudo de una nave SpaceStation. Se calcula
+        multiplicando la potencia del escudo por los factores potenciadores
+        de todos los potenciadores de escudo disponibles.
+    
+    -Parámetros: void
+    
+    -Return: La energía del escudo utilizado.
+    
+    */
+    /****************************************************************/
+    float protection(){
+        
+        int size = shieldBoosters.size();
+        float factor = 1;
+        
+        for(int i = 0; i < size; i++){
+            
+            ShieldBooster s = shieldBoosters.get(i);
+            factor *= s.useIt();
+            
+        }
+        
+        return shieldPower*factor;
+    }
+    
 }
 

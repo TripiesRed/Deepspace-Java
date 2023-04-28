@@ -2,3 +2,4 @@
 **/manifest.mf
 /build/
 nbproject/private/*
+/dist/

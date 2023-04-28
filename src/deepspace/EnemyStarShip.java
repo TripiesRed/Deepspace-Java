@@ -31,7 +31,7 @@ public class EnemyStarShip {
     }
     
     //Métodos Visibilidad de Paquete
-    EnemyToUI getEnemyUIversion (){ return new EnemyToUI(this); }
+    EnemyToUI getUIversion (){ return new EnemyToUI(this); }
     
     //Métodos Públicos
     public float fire(){ return ammoPower; }
