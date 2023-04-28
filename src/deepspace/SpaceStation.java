@@ -191,7 +191,7 @@ public class SpaceStation {
     
     -Funcionalidad: Realiza el disparo de una nave SpaceStation. Se calcula  
         con el producto de multiplicar los potenciadores de las armas de 
-        la nave y la potencia de disparo.
+        la nave y la potencia de disparo (@ammoPower).
     
     -Parámetros: void
     
@@ -220,8 +220,8 @@ public class SpaceStation {
     /* protection(): float
     
     -Funcionalidad: Utiliza el escudo de una nave SpaceStation. Se calcula
-        multiplicando la potencia del escudo por los factores potenciadores
-        de todos los potenciadores de escudo disponibles.
+        multiplicando la potencia del escudo (@shieldPower) por los factores 
+        potenciadores de todos los potenciadores de escudo disponibles.
     
     -Parámetros: void
     
@@ -244,5 +244,153 @@ public class SpaceStation {
         return shieldPower*factor;
     }
     
+    /****************************************************************/
+    /* receiveShot(shot): ShotResult
+    
+    -Funcionalidad: Calcula el resultado de recibir un disparo. Se calcula
+        decrementando la potencia del escudo en función de la potencia de 
+        disparoo recibido y devolver si se ha resistido o no.
+    
+    -Parámetros: <shot> Valor float de un disparo recibido.
+    
+    -Return: Indica el resultado de recibir el disparo.
+    
+    */
+    /****************************************************************/
+    ShotResult receiveShot(float shot){
+        
+        float myProtection = protection();
+        
+        if(myProtection >= shot){
+            
+            shieldPower -= SHIELDLOSSPERUNITSHOT*shot;
+            
+            if(shieldPower < 0.0) shieldPower = 0.0f;
+            
+            return ShotResult.RESIST;
+        }
+        
+        else{
+            
+            shieldPower = 0.0f;
+            
+            return ShotResult.DONOTRESIST;
+        }
+        
+    }
+    
+    /****************************************************************/
+    /* setLoot(loot): void
+    
+    -Funcionalidad: Recibe un botín. Por cada elemento de cada tipo, se 
+        le pide a CardDealer un elemento del mismo tipo, y se intenta almacenar
+        mediante el método correspondiente.
+    
+    -Parámetros: <loot> Botín recibido.
+    
+    -Return: void
+    
+    */
+    /****************************************************************/
+    void setLoot(Loot loot){
+        CardDealer dealer = CardDealer.getInstance();
+        
+        int h = loot.getNHangars();
+        
+        //Recibe Hangar
+        if(h > 0){
+            Hangar hangar = dealer.nextHangar();
+            this.receiveHangar(hangar);
+        }
+        
+        int elements = loot.getNSupplies();
+        
+        //Recibe Provisiones(Supplies)
+        for(int i = 0; i < elements; i++){
+            SuppliesPackage sup = dealer.nextSuppliesPackage();
+            this.receiveSupplies(sup);
+        }
+        
+        elements = loot.getNWeapons();
+        
+        //Recibe Armas(Weapons)
+        for(int i = 0; i < elements; i++){
+            Weapon weap = dealer.nextWeapon();
+            this.receiveWeapon(weap);
+        }
+        
+        elements = loot.getNShields();
+        
+        //Recibe Escudo(ShieldBoosters)
+        for(int i = 0; i < elements; i++){
+            ShieldBooster sh = dealer.nextShieldBooster();
+            this.receiveShieldBooster(sh);
+        }
+        
+        //Recibe Medallas
+        nMedals += loot.getNMedals();
+        
+    }
+    
+    /****************************************************************/
+    /* discardWeapon(i): void
+    
+    -Funcionalidad: Se intenta descartar el arma con índice i de la colección
+        de armas en uso (@weapons). También actualiza el valor de daño 
+        pendiente (@pendingDamage) en caso de haberlo.
+    
+    -Parámetros: <i> Índice del arma a descartar.
+    
+    -Return: void
+    
+    */
+    /****************************************************************/
+    void discardWeapon(int i){
+        
+        int size = weapons.size();
+        
+        if(i >= 0 && i < size){
+            
+            Weapon w = weapons.remove(i);
+            
+            //Actualizamos pendingDamage en caso de haberlo
+            if(pendingDamage != null){
+                pendingDamage.discardWeapon(w);
+                cleanPendingDamage();
+            }
+            
+        }
+    }
+    
+    /****************************************************************/
+    /* discardShieldBooster(i): void
+    
+    -Funcionalidad: Se intenta descartar el potenciador de escudo con índice i 
+        de la colección de potenciadores en uso (@shieldBoosters). 
+        También actualiza el valor de daño pendiente (@pendingDamage) en caso 
+        de haberlo.
+    
+    -Parámetros: <i> Índice del potenciador de escudo a descartar.
+    
+    -Return: void
+    
+    */
+    /****************************************************************/
+    void discardShieldBooster(int i){
+        
+        int size = shieldBoosters.size();
+        
+        if(i >= 0 && i < size){
+            
+            shieldBoosters.remove(i);
+            
+            //Actualizamos pendingDamage en caso de haberlo
+            if(pendingDamage != null){
+                pendingDamage.discardShieldBooster();
+                cleanPendingDamage();
+            }
+            
+        }
+    }
 }
 
