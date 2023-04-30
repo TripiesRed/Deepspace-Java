@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/gonzalomp/Escritorio/PDOO/Java/Practica/src/deepspace/Hangar.java</file>
-            <file>file:/home/gonzalomp/Escritorio/PDOO/Java/Practica/src/deepspace/SpaceStation.java</file>
-            <file>file:/home/gonzalomp/Escritorio/PDOO/Java/Practica/src/deepspace/GameUniverse.java</file>
-            <file>file:/home/gonzalomp/Escritorio/PDOO/Java/Practica/src/deepspace/EnemyStarShip.java</file>
-            <file>file:/home/gonzalomp/Escritorio/PDOO/Java/Practica/src/deepspace/Damage.java</file>
+            <file>file:/home/diegoos_03/Escritorio/PDOO/Deepspace-Java/src/deepspace/Dice.java</file>
+            <file>file:/home/diegoos_03/Escritorio/PDOO/Deepspace-Java/src/deepspace/GameStateController.java</file>
+            <file>file:/home/diegoos_03/Escritorio/PDOO/Deepspace-Java/src/deepspace/GameUniverse.java</file>
+            <file>file:/home/diegoos_03/Escritorio/PDOO/Deepspace-Java/src/deepspace/GameState.java</file>
         </group>
     </open-files>
 </project-private>
