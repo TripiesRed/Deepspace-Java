@@ -25,6 +25,7 @@ public class SpaceStation {
     private ArrayList<ShieldBooster> shieldBoosters;
     private Hangar hangar;
 
+    //Métodos Privados
     private void assignFuelValue(float f){
         if(f <= MAXFUEL){
             fuelUnits = f;
@@ -40,6 +41,7 @@ public class SpaceStation {
         }
     }
     
+    //Métodos con Visibilidad de Paquete
     SpaceStation(String n, SuppliesPackage supplies){
         name = n;
         ammoPower = supplies.getAmmoPower();
@@ -52,45 +54,47 @@ public class SpaceStation {
         hangar = null;
     }
     
-    float getAmmoPower(){
+    //Métodos Públicos
+    //Consultores
+    public float getAmmoPower(){
         return ammoPower;
     }
     
-    float getFuelUnits(){
+    public float getFuelUnits(){
         return fuelUnits;
     }
     
-    Hangar getHangar(){
+    public Hangar getHangar(){
         return hangar;
     }
     
-    String getName(){
+    public String getName(){
         return name;
     }
     
-    int getNMedals(){
+    public int getNMedals(){
         return nMedals;
     }
     
-    Damage getPendingDamage(){
+    public Damage getPendingDamage(){
         return pendingDamage;
     }
     
-    ArrayList<ShieldBooster> getShieldBoosters(){
+    public ArrayList<ShieldBooster> getShieldBoosters(){
         return shieldBoosters;
     }
     
-    ArrayList<Weapon> getWeapons(){
+    public ArrayList<Weapon> getWeapons(){
         return weapons;
     }
     
-    float getShieldPower(){
+    public float getShieldPower(){
         return shieldPower;
     }
     
-    SpaceStationToUI getUIversion() { return new SpaceStationToUI(this); }
+    public SpaceStationToUI getUIversion() { return new SpaceStationToUI(this); }
     
-    boolean receiveWeapon(Weapon w){
+    public boolean receiveWeapon(Weapon w){
         if(hangar != null){
             return hangar.addWeapon(w);
         }
@@ -99,7 +103,7 @@ public class SpaceStation {
         }
     }
     
-    boolean receiveShieldBooster(ShieldBooster s){
+    public boolean receiveShieldBooster(ShieldBooster s){
         if(hangar != null){
             return hangar.addShieldBooster(s);
         }
@@ -108,27 +112,27 @@ public class SpaceStation {
         } 
     }
     
-    void receiveHangar(Hangar h){
+    public void receiveHangar(Hangar h){
         if(hangar == null){
             hangar = h;
         }
     } 
     
-    void discardHangar(){
+    public void discardHangar(){
         hangar = null;
     }
     
-    void receiveSupplies(SuppliesPackage s){
+    public void receiveSupplies(SuppliesPackage s){
         ammoPower += s.getAmmoPower();
         fuelUnits += s.getFuelUnits();
         shieldPower += s.getShieldPower();
     }
     
-    void setPendingDamage(Damage d){
+    public void setPendingDamage(Damage d){
         pendingDamage = d.adjust(weapons, shieldBoosters);
     }
     
-    void mountWeapon(int i){
+    public void mountWeapon(int i){
         if( hangar != null){
             Weapon w = hangar.removeWeapon(i);
             if(w != null){
@@ -137,7 +141,7 @@ public class SpaceStation {
         }   
     }
     
-    void mountShieldBooster(int i){
+    public void mountShieldBooster(int i){
         if( hangar != null){
             ShieldBooster s = hangar.removeShieldBooster(i);
             if(s != null){
@@ -146,33 +150,33 @@ public class SpaceStation {
         }
     }
     
-    void discardWeaponInHangar(int i){
+    public void discardWeaponInHangar(int i){
         if(hangar != null){
             hangar.removeWeapon(i);
         }
     }
     
-    void discardShieldBoosterInHangar(int i){
+    public void discardShieldBoosterInHangar(int i){
         if(hangar != null){
             hangar.removeShieldBooster(i);
         }
     }
     
-    float getSpeed(){
+    public float getSpeed(){
         return fuelUnits / MAXFUEL;
     }
     
-    void move(){
+    public void move(){
         if (getSpeed() <= fuelUnits){
             fuelUnits = fuelUnits - getSpeed();
         }
     }
     
-    boolean validState(){
+    public boolean validState(){
         return (pendingDamage == null);
     }
     
-    void cleanUpMountedItems(){
+    public void cleanUpMountedItems(){
         for(int i = 0; i < weapons.size(); i++){
             if(weapons.get(i).getUses() == 0){
                 weapons.remove(i);
@@ -199,7 +203,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
-    float fire(){
+    public float fire(){
        
         int size = weapons.size();
         float factor = 1;
@@ -229,7 +233,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
-    float protection(){
+    public float protection(){
         
         int size = shieldBoosters.size();
         float factor = 1;
@@ -257,7 +261,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
-    ShotResult receiveShot(float shot){
+    public ShotResult receiveShot(float shot){
         
         float myProtection = protection();
         
@@ -292,7 +296,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
-    void setLoot(Loot loot){
+    public void setLoot(Loot loot){
         CardDealer dealer = CardDealer.getInstance();
         
         int h = loot.getNHangars();
@@ -345,7 +349,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
-    void discardWeapon(int i){
+    public void discardWeapon(int i){
         
         int size = weapons.size();
         
@@ -376,7 +380,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
-    void discardShieldBooster(int i){
+    public void discardShieldBooster(int i){
         
         int size = shieldBoosters.size();
         

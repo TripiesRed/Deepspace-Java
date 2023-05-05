@@ -19,8 +19,8 @@ public class GameUniverse {
     private ArrayList<SpaceStation> spaceStations;
     private EnemyStarShip currentEnemy;
     
-    
-    GameUniverse(){
+    //Constructor
+    public GameUniverse(){
         gameState = new GameStateController();
         turns = 0;
         dice = new Dice();
@@ -30,7 +30,13 @@ public class GameUniverse {
         currentStation = null;
     }
     
-    void mountShiedBooster(int i){
+    //Consultores
+    public GameState getState(){
+        return gameState.getState();
+    }
+    
+    //Métodos Públicos
+    public void mountShieldBooster(int i){
         
         if(gameState.getState() == GameState.INIT || 
            gameState.getState() == GameState.AFTERCOMBAT){
@@ -38,7 +44,7 @@ public class GameUniverse {
         }
     }
     
-    void mountWeapon(int i){
+    public void mountWeapon(int i){
         
         if(gameState.getState() == GameState.INIT || 
            gameState.getState() == GameState.AFTERCOMBAT){
@@ -46,7 +52,7 @@ public class GameUniverse {
         }
     }
     
-    void discardHangar(){
+    public void discardHangar(){
         
         if(gameState.getState() == GameState.INIT || 
            gameState.getState() == GameState.AFTERCOMBAT){
@@ -54,7 +60,7 @@ public class GameUniverse {
         }
     }
     
-    void discardShieldBooster(int i){
+    public void discardShieldBooster(int i){
         
         if(gameState.getState() == GameState.INIT || 
            gameState.getState() == GameState.AFTERCOMBAT){
@@ -62,7 +68,7 @@ public class GameUniverse {
         }
     }
     
-    void discardShieldBoosterInHangar(int i){
+    public void discardShieldBoosterInHangar(int i){
         
         if(gameState.getState() == GameState.INIT || 
            gameState.getState() == GameState.AFTERCOMBAT){
@@ -70,7 +76,7 @@ public class GameUniverse {
         }
     }
     
-    void discardWeapon(int i){
+    public void discardWeapon(int i){
         
         if(gameState.getState() == GameState.INIT || 
            gameState.getState() == GameState.AFTERCOMBAT){
@@ -78,7 +84,7 @@ public class GameUniverse {
         }
     }
     
-    void discardWeaponInHangar(int i){
+    public void discardWeaponInHangar(int i){
         
         if(gameState.getState() == GameState.INIT || 
            gameState.getState() == GameState.AFTERCOMBAT){
@@ -86,7 +92,7 @@ public class GameUniverse {
         }
     }
     
-    boolean haveAWinner(){
+    public boolean haveAWinner(){
         
         if(currentStation.getNMedals() == WIN){
             return true;
@@ -96,7 +102,7 @@ public class GameUniverse {
         }
     }
     
-    boolean nextTurn(){
+    public boolean nextTurn(){
         
         if(gameState.getState() == GameState.AFTERCOMBAT){
             
@@ -125,7 +131,7 @@ public class GameUniverse {
         }
     }
     
-    void init(ArrayList<String> names){
+    public void init(ArrayList<String> names){
         
         if(gameState.getState() == GameState.CANNOTPLAY){
             
@@ -156,7 +162,7 @@ public class GameUniverse {
         }
     }
     
-    CombatResult combat(){
+    public CombatResult combat(){
         
         if(gameState.getState() == GameState.BEFORECOMBAT || 
            gameState.getState() == GameState.INIT){
@@ -219,7 +225,7 @@ public class GameUniverse {
         return combatResult;
     }
     
-    GameUniverseToUI getUIversion() {
+    public GameUniverseToUI getUIversion() {
         
         return new GameUniverseToUI(currentStation, currentEnemy); 
     }
