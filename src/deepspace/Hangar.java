@@ -18,6 +18,8 @@ public class Hangar {
     //Constructores
     Hangar (int capacity ){
         maxElements = capacity;
+        weapons  = new ArrayList<Weapon>();
+        shieldBoosters = new ArrayList<ShieldBooster>();
     }
     
     Hangar (Hangar other){
