@@ -152,10 +152,12 @@ public class GameUniverse {
                 Loot lo = new Loot(0, nw, ns, nh, 0);
                 
                 station.setLoot(lo);
+                
+                i++;
             }
             
             currentStationIndex = dice.whoStarts(names.size());
-            currentStation = spaceStations.get(i);
+            currentStation = spaceStations.get(currentStationIndex);
             
             currentEnemy = dealer.nextEnemy();
             gameState.next(turns, spaceStations.size());
