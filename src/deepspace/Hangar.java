@@ -75,7 +75,7 @@ public class Hangar {
     
     public ShieldBooster removeShieldBooster(int s){
         
-        if(shieldBoosters.size() > s){
+        if(shieldBoosters.size() > s && s >= 0){
             
             ShieldBooster deleted = shieldBoosters.get(s);
             shieldBoosters.remove(s);
@@ -85,8 +85,7 @@ public class Hangar {
         else return null;
     }
     
-    public Weapon removeWeapon(int w){
-       
+    public Weapon removeWeapon(int w) {
         if (w >= 0 && w < weapons.size()) {
             Weapon deleted = weapons.remove(w);
             return deleted;
