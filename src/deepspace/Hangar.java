@@ -87,9 +87,9 @@ public class Hangar {
     
     public Weapon removeWeapon(int w){
         
-        if(weapons.size() > w ){
+        if( w >= 0 && weapons.size() > w ){
             
-            Weapon deleted = weapons.get(w);
+            Weapon deleted = new Weapon(weapons.get(w));
             weapons.remove(w);
             return deleted;
         }
