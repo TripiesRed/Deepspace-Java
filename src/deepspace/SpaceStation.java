@@ -173,7 +173,13 @@ public class SpaceStation {
     }
     
     public boolean validState(){
-        return (pendingDamage == null);
+        boolean valid = false;
+        
+        if(pendingDamage == null) valid = true;
+        
+        else if (pendingDamage.hasNoEffect()) valid = true;
+        
+        return valid;
     }
     
     public void cleanUpMountedItems(){

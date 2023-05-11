@@ -36,7 +36,7 @@ public class Damage {
     DamageToUI getUIversion(){ return new DamageToUI(this); }
     
     //Métodos Privados
-    int arrayContainsType (ArrayList<Weapon> w, WeaponType t) {
+    int arrayContainsType (ArrayList<WeaponType> w, WeaponType t) {
         
         int index = -1;
         
@@ -65,10 +65,9 @@ public class Damage {
     
     void discardWeapon (Weapon w){
         
-        if(!weapons.isEmpty()) weapons.remove(w.getType());
+        if(weapons != null && !weapons.isEmpty() && weapons.contains(w.getType())) weapons.remove(w.getType());
         
-        else 
-            if(nWeapons > 0) nWeapons--;
+        else if(nWeapons > 0) nWeapons--;
         
     }
     

@@ -197,7 +197,7 @@ public class GameUniverse {
         }
         else{
             float fire = station.fire();
-            ShotResult result = station.receiveShot(fire);
+            ShotResult result = enemy.receiveShot(fire);
             enemyWins = (result == ShotResult.RESIST);
         }
         
@@ -224,6 +224,7 @@ public class GameUniverse {
             combatResult = CombatResult.STATIONWINS;
         }
         
+        gameState.next(turns, spaceStations.size());
         return combatResult;
     }
     
