@@ -15,11 +15,38 @@ public class NumericDamage extends Damage {
         super(s, w);
     }
     
-    NumericDamage (ArrayList<WeaponType> wl, int s){
-        super(wl, s);
+    public void discardWeapon (Weapon w){
+        
+        if(getNWeapons() > 0){
+            setNWeapons( (getNWeapons() - 1) );
+        }
     }
     
-    NumericDamage (NumericDamage d){
-        this(d.getWeapons(), d.getNShields());
+    @Override
+    NumericDamageToUI getUIversion(){
+        return new NumericDamageToUI(this);
+    }
+
+    @Override
+    public NumericDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
+        int new_n_weapons = 0;
+        int new_n_shields = 0;
+        
+        if(getNWeapons() > w.size()){
+            new_n_weapons = w.size();
+        }
+        else{
+            new_n_weapons = getNWeapons();
+        }
+        
+        
+        if(getNShields() > s.size()){
+            new_n_shields = s.size();
+        }
+        else{
+            new_n_shields = getNShields();
+        }
+        
+        return new NumericDamage(new_n_weapons, new_n_shields);
     }
 }

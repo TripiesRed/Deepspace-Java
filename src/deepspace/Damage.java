@@ -9,8 +9,8 @@ import java.util.ArrayList;
  *
  * @author gonzalomp
  */
-public class Damage {
-    
+public abstract class Damage {
+
     //Atributos
     private int nShields;
     private int nWeapons;
@@ -20,69 +20,44 @@ public class Damage {
     Damage (int s, int w){
         nWeapons = w;
         nShields = s;
-    }
-    
-    Damage (ArrayList<WeaponType> wl, int s){
-        weapons = wl;
-        nShields = s;
-        nWeapons = wl.size();
+        weapons = new ArrayList<>();
     }
     
     Damage (Damage d){
-        this(d.weapons, d.nShields);
+       this.nShields = d.nShields;
+       this.nWeapons = d.nWeapons;
+       this.weapons = d.weapons;
     }
+     
     
-    //Métodos Visibilidad de Paquete
-    DamageToUI getUIversion(){ return new DamageToUI(this); }
+    // Métodos abstractos
+    public abstract Damage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s);
     
-    //Métodos Privados
-    int arrayContainsType (ArrayList<WeaponType> w, WeaponType t) {
-        
-        int index = -1;
-        
-        if(w.contains(t)) index = w.indexOf(t);
-        
-        return index;
-    }
+    abstract DamageToUI getUIversion();
     
-    //Métodods Públicos
-    Damage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
-        
-        int newNWeapons, newNShields;
-        
-        //Ajustamos nWeapons
-        if(nWeapons > w.size()) newNWeapons = w.size();
-        
-        else newNWeapons = nWeapons;
-       
-        //Ajustamos nShields
-        if(nShields > s.size()) newNShields = s.size();
-        
-        else newNShields = nShields;
-        
-        return new Damage(newNWeapons, newNShields);
-    }
+    //Métodods Públicos y Protegidos
     
-    void discardWeapon (Weapon w){
-        
-        if(weapons != null && !weapons.isEmpty() && weapons.contains(w.getType())) weapons.remove(w.getType());
-        
-        else if(nWeapons > 0) nWeapons--;
-        
-    }
-    
-    void discardShieldBooster (){
+    public void discardShieldBooster (){
         
         if(nShields > 0) nShields--;
         
     }
     
-    boolean hasNoEffect (){ return nShields == 0 && nWeapons == 0; }
+    public boolean hasNoEffect (){ return nShields == 0 && nWeapons == 0; }
     
-    int getNShields (){ return nShields; }
+    public int getNShields (){ return nShields; }
     
-    int getNWeapons (){ return nWeapons; }
+    public int getNWeapons (){ return nWeapons; }
     
-    ArrayList<WeaponType> getWeapons () { return weapons; }
+    public ArrayList<WeaponType> getWeapons () { return weapons; }
     
+    protected void setNWeapons(int n ){ nWeapons = n; }
+    
+    protected void setWeapons(ArrayList<WeaponType> w) {
+        nWeapons = w.size();
+        weapons = w;
+    }
+    
+  
 }
+

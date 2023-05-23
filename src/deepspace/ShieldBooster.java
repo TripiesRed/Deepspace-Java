@@ -8,7 +8,7 @@ package deepspace;
  *
  * @author diegoos_03
  */
-class ShieldBooster {
+class ShieldBooster implements CombatElement{
     
     private String name;
     private float boost;
@@ -33,10 +33,12 @@ class ShieldBooster {
         return boost; 
     }
     
+    @Override
     public int getUses(){ 
         return uses; 
     }
     
+    @Override
     public float useIt(){
         
         if (uses > 0){

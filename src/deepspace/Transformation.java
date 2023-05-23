@@ -8,6 +8,6 @@ package deepspace;
  *
  * @author diegoos_03
  */
-public enum CombatResult {
-    ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS, STATIONWINSANDCONVERTS
+public enum Transformation {
+    NOTRANSFORM, GETEFFICIENT, SPACECITY
 }

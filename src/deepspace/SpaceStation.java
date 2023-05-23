@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author gonzalomp
  */
-public class SpaceStation {
+public class SpaceStation implements SpaceFighter{
    
     private static final int MAXFUEL = 100;
     private static final float SHIELDLOSSPERUNITSHOT = 0.1f;
@@ -94,6 +94,20 @@ public class SpaceStation {
     
     public SpaceStationToUI getUIversion() { return new SpaceStationToUI(this); }
     
+    // Modificadores
+    
+    protected void setWeapons(ArrayList<Weapon> w){
+        weapons = w;
+    }
+    
+    protected void setNMedals(int n){
+        nMedals = n;
+    }
+    
+    protected void setShieldBoosters( ArrayList<ShieldBooster> s){
+        shieldBoosters = s;
+    }
+ 
     public boolean receiveWeapon(Weapon w){
         if(hangar != null){
             return hangar.addWeapon(w);
@@ -209,6 +223,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
+    @Override
     public float fire(){
        
         int size = weapons.size();
@@ -239,6 +254,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
+    @Override
     public float protection(){
         
         int size = shieldBoosters.size();
@@ -267,6 +283,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
+    @Override
     public ShotResult receiveShot(float shot){
         
         float myProtection = protection();
@@ -302,7 +319,7 @@ public class SpaceStation {
     
     */
     /****************************************************************/
-    public void setLoot(Loot loot){
+    public Transformation setLoot(Loot loot){
         CardDealer dealer = CardDealer.getInstance();
         
         int h = loot.getNHangars();
@@ -339,6 +356,18 @@ public class SpaceStation {
         
         //Recibe Medallas
         nMedals += loot.getNMedals();
+        
+        if(loot.getEfficient()){
+            return Transformation.GETEFFICIENT;
+        }
+        else{
+            if(loot.spaceCity()){
+                return Transformation.SPACECITY;
+            }
+            else{
+                return Transformation.NOTRANSFORM;
+            }
+        }
         
     }
     

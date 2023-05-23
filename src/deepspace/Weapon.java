@@ -8,7 +8,7 @@ package deepspace;
  *
  * @author gonzalomp
  */
-public class Weapon {
+public class Weapon implements CombatElement {
     
     //Atributos de instancia
     private String name;
@@ -30,11 +30,12 @@ public class Weapon {
     }
     
     //Consultores de los atributos
-    WeaponType getType() { 
+    public WeaponType getType() { 
         return type; 
     }
     
-    int getUses() { 
+    @Override
+    public int getUses() { 
         return uses; 
     }
     
@@ -42,6 +43,7 @@ public class Weapon {
         return type.getPower();
     }
     
+    @Override
     public float useIt(){
         
         if (uses > 0){
