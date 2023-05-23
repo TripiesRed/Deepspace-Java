@@ -35,6 +35,8 @@ public abstract class Damage {
     
     abstract DamageToUI getUIversion();
     
+    public abstract void discardWeapon(Weapon w);
+    
     //Métodods Públicos y Protegidos
     
     public void discardShieldBooster (){

@@ -16,6 +16,7 @@ public class SpecificDamage extends Damage {
         setWeapons(weapons);
     }
     
+    @Override
     public void discardWeapon (Weapon w){
         
         WeaponType weapon_type = w.getType();

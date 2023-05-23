@@ -15,6 +15,7 @@ public class NumericDamage extends Damage {
         super(s, w);
     }
     
+    @Override
     public void discardWeapon (Weapon w){
         
         if(getNWeapons() > 0){
