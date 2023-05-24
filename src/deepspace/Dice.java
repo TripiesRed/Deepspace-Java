@@ -15,6 +15,7 @@ class Dice {
     private final float NSHIELDSPROB;
     private final float NWEAPONSPROB;
     private final float FIRSTSHOTPROB;
+    private final float EXTRAEFFICIENCYPROB;
     private Random generator;
     
     
@@ -23,10 +24,11 @@ class Dice {
         NSHIELDSPROB = 0.25f;
         NWEAPONSPROB = 0.33f;
         FIRSTSHOTPROB = 0.5f;
+        EXTRAEFFICIENCYPROB = 0.8f;
         this.generator = new Random();
     }
     
-    int initWithNHangars(){
+    public int initWithNHangars(){
         if (generator.nextFloat() < NHANGARSPROB) {
             return 0;
         } 
@@ -35,7 +37,7 @@ class Dice {
         }
     }
     
-    int initWithNWeapons(){
+    public int initWithNWeapons(){
         
         float random = generator.nextFloat();
         int return_value;
@@ -54,7 +56,7 @@ class Dice {
         return return_value;
     }
     
-    int initWithNShields(){
+    public int initWithNShields(){
         if (generator.nextFloat() < NSHIELDSPROB) {
             return 0;
         } else {
@@ -62,12 +64,12 @@ class Dice {
         }
     }
     
-    int whoStarts(int nPlayers){
+    public int whoStarts(int nPlayers){
         
         return generator.nextInt(nPlayers);
     }
     
-    GameCharacter firstShot(){
+    public GameCharacter firstShot(){
         if (generator.nextFloat() < FIRSTSHOTPROB) {
             return GameCharacter.SPACESTATION;
         } else {
@@ -75,8 +77,13 @@ class Dice {
         }
     }
     
-    boolean spaceStationMoves(float speed){
+    public boolean spaceStationMoves(float speed){
         
         return generator.nextFloat() < speed;
+    }
+    
+    public boolean extraEfficiency(){
+        
+        return generator.nextFloat() < EXTRAEFFICIENCYPROB;
     }
 }

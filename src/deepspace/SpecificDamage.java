@@ -34,36 +34,23 @@ public class SpecificDamage extends Damage {
     }
     
 
+    @Override
     public SpecificDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
-        int new_n_weapons = 0;
-        int new_n_shields = 0;
-        ArrayList<WeaponType> new_wl = new ArrayList<>();
-        
-        if (getNWeapons() > w.size()) {
-            new_n_weapons = w.size();
-            //OJO ERROR EN LA LÍNEA DE ABAJO
-            // new_wl = w;
-        }
-        else {
-            new_n_weapons = getNWeapons();
-            
-            int i = 0;
-            while (i < w.size()) {
-                int n = arrayContainsType(getWeapons(), getWeapons().get(i));
-                if (n != -1) {
-                    new_wl.add(getWeapons().get(n));
-                }
-                i++;
+        int l_nshields = Math.min(s.size(), this.getNShields());
+
+        ArrayList<WeaponType> result = new ArrayList();
+        ArrayList<Weapon> aux = new ArrayList(w);
+
+        for (int i = 0; i<this.getWeapons().size(); i++) {
+            WeaponType element = this.getWeapons().get(i);
+            int indice = this.arrayContainsType(aux, element);
+            if (indice != -1) {
+                result.add(element);
+                aux.remove(indice);
             }
-        }
-        
-        if (getNShields() > s.size()) {
-            new_n_shields = s.size();
-        } 
-        else {
-            new_n_shields = getNShields();
-        }
-        return new SpecificDamage(new_wl, new_n_shields);
+        }                    
+
+        return new SpecificDamage(result, l_nshields);
     }
     
     //Métodos privados

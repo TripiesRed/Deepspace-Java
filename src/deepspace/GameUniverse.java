@@ -18,6 +18,7 @@ public class GameUniverse {
     private SpaceStation currentStation;
     private ArrayList<SpaceStation> spaceStations;
     private EnemyStarShip currentEnemy;
+    private boolean haveSpaceCity;
     
     //Constructor
     public GameUniverse(){
@@ -28,6 +29,7 @@ public class GameUniverse {
         spaceStations =  new ArrayList<SpaceStation>();
         currentStationIndex = 0;
         currentStation = null;
+        haveSpaceCity = false;
     }
     
     //Consultores
@@ -231,5 +233,26 @@ public class GameUniverse {
     public GameUniverseToUI getUIversion() {
         
         return new GameUniverseToUI(currentStation, currentEnemy); 
+    }
+    
+    public void makeStationEfficient() {
+        
+        if(dice.extraEfficiency()){
+            currentStation = new BetaPowerEfficientSpaceStation(currentStation);
+            spaceStations.set(currentStationIndex, currentStation);
+        }
+        else{
+            currentStation = new PowerEfficientSpaceStation(currentStation);
+            spaceStations.set(currentStationIndex, currentStation);
+        }
+    }
+    
+    public void createSpaceCity() {
+        
+        if(!haveSpaceCity){
+            currentStation = new SpaceCity(currentStation, spaceStations);
+            spaceStations.set(currentStationIndex, currentStation);
+            haveSpaceCity = true;
+        }
     }
 }

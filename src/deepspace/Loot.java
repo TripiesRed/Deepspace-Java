@@ -56,6 +56,6 @@ class Loot {
     
     public boolean spaceCity() { return this.spaceCity; }
     
-    LootToUI getUIversion() { return new LootToUI(this); }
+    public LootToUI getUIversion() { return new LootToUI(this); }
     
 }

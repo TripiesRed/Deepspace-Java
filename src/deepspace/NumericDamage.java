@@ -30,24 +30,10 @@ public class NumericDamage extends Damage {
 
     @Override
     public NumericDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
-        int new_n_weapons = 0;
-        int new_n_shields = 0;
         
-        if(getNWeapons() > w.size()){
-            new_n_weapons = w.size();
-        }
-        else{
-            new_n_weapons = getNWeapons();
-        }
-        
-        
-        if(getNShields() > s.size()){
-            new_n_shields = s.size();
-        }
-        else{
-            new_n_shields = getNShields();
-        }
-        
-        return new NumericDamage(new_n_weapons, new_n_shields);
+        int l_nshields = Math.min(s.size(), this.getNShields());
+        int l_nweapons = Math.min(w.size(), this.getNWeapons());
+
+        return new NumericDamage(l_nweapons, l_nshields);
     }
 }
