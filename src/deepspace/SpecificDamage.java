@@ -20,7 +20,8 @@ public class SpecificDamage extends Damage {
     public void discardWeapon (Weapon w){
         
         WeaponType weapon_type = w.getType();
-        int weapon_index = arrayContainsType(getWeapons(), weapon_type);
+        int weapon_index = 0;
+                //arrayContainsType(getWeapons(), weapon_type);
         
         if (!getWeapons().isEmpty() && weapon_index != -1) {
             getWeapons().remove(weapon_index);
@@ -54,12 +55,21 @@ public class SpecificDamage extends Damage {
     }
     
     //Métodos privados
-    private int arrayContainsType (ArrayList<WeaponType> w, WeaponType t) {
+    private int arrayContainsType (ArrayList<Weapon> w, WeaponType t) {
         
-        int index = -1;
+        int pos = -1;
+        boolean encontrado = false;
+        int i = 0;
         
-        if(w.contains(t)) index = w.indexOf(t);
+        while(i<w.size() && !encontrado) {
+            if (w.get(i).getType() == t) {
+                encontrado = true;
+                pos = i;
+            }
+            else
+                i++;
+        }
         
-        return index;
+        return pos;
     }
 }
