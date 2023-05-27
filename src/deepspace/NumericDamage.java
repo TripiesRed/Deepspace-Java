@@ -34,6 +34,6 @@ public class NumericDamage extends Damage {
         int l_nshields = Math.min(s.size(), this.getNShields());
         int l_nweapons = Math.min(w.size(), this.getNWeapons());
 
-        return new NumericDamage(l_nweapons, l_nshields);
+        return new NumericDamage(l_nshields, l_nweapons);
     }
 }

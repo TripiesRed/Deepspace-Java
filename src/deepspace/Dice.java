@@ -84,6 +84,6 @@ class Dice {
     
     public boolean extraEfficiency(){
         
-        return generator.nextFloat() < EXTRAEFFICIENCYPROB;
+        return generator.nextFloat() > EXTRAEFFICIENCYPROB;
     }
 }

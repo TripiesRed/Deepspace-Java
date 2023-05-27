@@ -221,8 +221,15 @@ public class GameUniverse {
         }
         else{
             
-            Loot aloot = enemy.getLoot();
-            station.setLoot(aloot);
+            Loot aloot = enemy.getLoot();     
+            Transformation t = station.setLoot(aloot);
+            
+            if(t == Transformation.GETEFFICIENT)
+                makeStationEfficient();
+            
+            else if(t == Transformation.SPACECITY)
+                createSpaceCity();
+            
             combatResult = CombatResult.STATIONWINS;
         }
         
