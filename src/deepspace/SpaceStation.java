@@ -143,7 +143,9 @@ public class SpaceStation implements SpaceFighter{
     }
     
     public void setPendingDamage(Damage d){
+      
         pendingDamage = d.adjust(weapons, shieldBoosters);
+
     }
     
     public void mountWeapon(int i){

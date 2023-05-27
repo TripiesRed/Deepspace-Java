@@ -20,8 +20,7 @@ public class SpecificDamage extends Damage {
     public void discardWeapon (Weapon w){
         
         WeaponType weapon_type = w.getType();
-        int weapon_index = 0;
-                //arrayContainsType(getWeapons(), weapon_type);
+        int weapon_index = arrayContainsTypewt(getWeapons(), weapon_type);
         
         if (!getWeapons().isEmpty() && weapon_index != -1) {
             getWeapons().remove(weapon_index);
@@ -36,22 +35,38 @@ public class SpecificDamage extends Damage {
     
 
     @Override
-    public SpecificDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
-        int l_nshields = Math.min(s.size(), this.getNShields());
-
-        ArrayList<WeaponType> result = new ArrayList();
-        ArrayList<Weapon> aux = new ArrayList(w);
-
-        for (int i = 0; i<this.getWeapons().size(); i++) {
-            WeaponType element = this.getWeapons().get(i);
-            int indice = this.arrayContainsType(aux, element);
-            if (indice != -1) {
-                result.add(element);
-                aux.remove(indice);
+    public SpecificDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
+            
+        int new_n_weapons = 0;
+        int new_n_shields = 0;
+        ArrayList<WeaponType> new_wl = new ArrayList<>();
+            // Ajustamos nWeapons
+        if (getNWeapons() > w.size()) {
+            new_n_weapons = w.size();
+            
+            for (Weapon i : w) {
+                new_wl.add(i.getType());
             }
-        }                    
+            
+        } else {
+            new_n_weapons = getNWeapons();
+            int i = 0;
+            while (i < w.size()) {
+                if (getWeapons().contains(w.get(i).getType())) {
+                    new_wl.add(w.get(i).getType());
+                }
+                i++;
+            }
+        }
 
-        return new SpecificDamage(result, l_nshields);
+        // Ajustamos nShields
+        if (getNShields() > s.size()) {
+            new_n_shields = s.size();
+        } else {
+            new_n_shields = getNShields();
+        }
+
+        return new SpecificDamage(new_wl, new_n_shields);
     }
     
     //Métodos privados
@@ -63,6 +78,24 @@ public class SpecificDamage extends Damage {
         
         while(i<w.size() && !encontrado) {
             if (w.get(i).getType() == t) {
+                encontrado = true;
+                pos = i;
+            }
+            else
+                i++;
+        }
+        
+        return pos;
+    }
+    
+    private int arrayContainsTypewt (ArrayList<WeaponType> w, WeaponType t) {
+        
+        int pos = -1;
+        boolean encontrado = false;
+        int i = 0;
+        
+        while(i<w.size() && !encontrado) {
+            if (w.get(i) == t) {
                 encontrado = true;
                 pos = i;
             }
