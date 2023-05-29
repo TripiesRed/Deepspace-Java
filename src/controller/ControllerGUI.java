@@ -41,7 +41,4 @@ public class ControllerGUI {
         System.exit(i);
     }
       
-
-
-
 }
