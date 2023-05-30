@@ -16,9 +16,8 @@ import deepspace.GameUniverse;
  */
 public class PlayWithGUI {
     public static void main(String[] args) {
-      MainWindow ui;
       GameUniverse game = new GameUniverse();
-      ui = MainWindow.getInstance();
+      MainWindow ui = MainWindow.getInstance();
       ControllerGUI controller = ControllerGUI.getInstance();
       controller.setModelView(game,ui);
       controller.start();   

@@ -7,7 +7,10 @@ package View.GUI;
 import View.View;
 import controller.ControllerGUI;
 import deepspace.GameUniverse;
+import deepspace.WeaponToUI;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,7 +37,22 @@ public class MainWindow extends javax.swing.JFrame implements View {
         });
     }  
     
-    public void updateView(){};
+    public void updateView(){
+        WeaponToUI W1 = ControllerGUI.getInstance().getWeapon();
+        WeaponToUI W2 = ControllerGUI.getInstance().getWeapon();
+        WeaponToUI W3 = ControllerGUI.getInstance().getWeapon();
+        ArrayList<WeaponToUI> listawp = new ArrayList<>();
+        listawp.add(W1);
+        listawp.add(W2);
+        listawp.add(W3);
+        
+        WeaponsView vistaListaW = new WeaponsView();
+        vistaListaW.setWeaponsView(listawp);
+        
+        panelPruebas.add(vistaListaW);
+        repaint();
+        revalidate();
+    };
     
     public void showView() {
         this.setVisible(true);
@@ -55,24 +73,19 @@ public class MainWindow extends javax.swing.JFrame implements View {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        panelPruebas = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("DeepSpace V1.0");
+        setMinimumSize(new java.awt.Dimension(480, 480));
+        getContentPane().add(panelPruebas, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel panelPruebas;
     // End of variables declaration//GEN-END:variables
 
 }

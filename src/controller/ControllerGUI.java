@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+
 import View.GUI.MainWindow;
+import deepspace.LootToUI;
+import deepspace.WeaponToUI;
 import deepspace.GameUniverse;
 
 /**
@@ -39,6 +42,14 @@ public class ControllerGUI {
     
     public void finish (int i) {
         System.exit(i);
+    }
+    
+    public LootToUI getLoot(){
+        return game.getALoot();
+    }
+    
+    public WeaponToUI getWeapon(){
+        return game.getWeapon();
     }
       
 }

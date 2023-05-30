@@ -262,4 +262,17 @@ public class GameUniverse {
             haveSpaceCity = true;
         }
     }
+    
+    public LootToUI getALoot(){
+        int nh = dice.initWithNHangars();
+        int nw = dice.initWithNWeapons();
+        int ns = dice.initWithNShields();
+
+        Loot lo = new Loot(0, nw, ns, nh, 0);
+        return lo.getUIversion();
+    }
+    
+    public WeaponToUI getWeapon(){
+        return CardDealer.getInstance().nextWeapon().getUIversion();
+    }
 }
