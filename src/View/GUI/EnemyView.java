@@ -27,9 +27,9 @@ public class EnemyView extends javax.swing.JPanel {
     
     public void setEnemyView(EnemyToUI e){
         
-        Enemigo.setText(e.getName());
-        Potencia_fuego.setText(Float.toString(e.getAmmoPower()));
-        Potencia_escudo.setText(Float.toString(e.getShieldPower()));
+        Enemigo.setText("Enemigo: " + e.getName());
+        Potencia_fuego.setText("Potencia de fuego: " + Float.toString(e.getAmmoPower()));
+        Potencia_escudo.setText("Potencia de defensa: " + Float.toString(e.getShieldPower()));
         
         loot_view.setLootView(e.getLoot());
         damage_view.setDamageView(e.getDamage());
@@ -104,7 +104,7 @@ public class EnemyView extends javax.swing.JPanel {
                 .addComponent(Botín, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Daño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

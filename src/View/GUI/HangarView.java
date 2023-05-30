@@ -22,7 +22,7 @@ public class HangarView extends javax.swing.JPanel {
         initComponents();
     }
     
-    public void setShieldsView(HangarToUI h){
+    public void setHangarView(HangarToUI h){
         
         setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar con " + 
                             Integer.toString(h.getMaxElements()) + " lugares"));
