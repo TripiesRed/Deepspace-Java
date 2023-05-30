@@ -4,31 +4,31 @@
  */
 package View.GUI;
 
-import deepspace.WeaponToUI;
+import deepspace.ShieldToUI;
 import java.util.ArrayList;
 
 /**
  *
  * @author diegoos_03
  */
-public class WeaponsView extends javax.swing.JPanel {
+public class ShieldsView extends javax.swing.JPanel {
 
     /**
-     * Creates new form WeaponsView
+     * Creates new form ShieldsView
      */
-    public WeaponsView() {
+    public ShieldsView() {
         initComponents();
     }
     
-    public void setWeaponsView(ArrayList<WeaponToUI> w){
+    public void setShieldsView(ArrayList<ShieldToUI> s){
         
         Interior.removeAll();
-        WeaponView wv;
+        ShieldView sv;
         
-        for(WeaponToUI weapon : w){
-            wv = new WeaponView();
-            wv.setWeaponView(weapon);
-            Interior.add(wv);
+        for(ShieldToUI shield : s){
+            sv = new ShieldView();
+            sv.setShieldView(shield);
+            Interior.add(sv);
         }
         
         repaint();
@@ -47,12 +47,20 @@ public class WeaponsView extends javax.swing.JPanel {
         Scroll = new javax.swing.JScrollPane();
         Interior = new javax.swing.JPanel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Potenciadores de fuego"));
-        setLayout(new java.awt.BorderLayout());
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Potenciadores de defensa"));
 
         Scroll.setViewportView(Interior);
 
-        add(Scroll, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 

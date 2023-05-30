@@ -3,35 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package View.GUI;
-
-import deepspace.WeaponToUI;
+import deepspace.ShieldToUI;
 /**
  *
  * @author diegoos_03
  */
-public class WeaponView extends javax.swing.JPanel {
+public class ShieldView extends javax.swing.JPanel {
 
     /**
-     * Creates new form WeaponView
+     * Creates new form ShieldView
      */
-    public WeaponView() {
-        initComponents(); 
-        
-        /*
-        Tipo.setText("Tipo: " + w.getType().toString());
-        Potencia.setText("Potencia: " + Float.toString(w.getPower()));
-        Usos.setText("Usos: " + Integer.toString(w.getUses()));
-        */
+    public ShieldView() {
+        initComponents();
     }
     
-    public void setWeaponView(WeaponToUI w){
+    public void setShieldView(ShieldToUI s){
         
-        Tipo.setText("Tipo: " + w.getType().toString());
-        Potencia.setText("Potencia: " + Float.toString(w.getPower()));
-        Usos.setText("Usos: " + Integer.toString(w.getUses()));
+        Potencia.setText("Potencia: " + Float.toString(s.getBoost()));
+        Usos.setText("Usos: " + Integer.toString(s.getUses()));
         repaint();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,14 +33,8 @@ public class WeaponView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Tipo = new javax.swing.JLabel();
         Potencia = new javax.swing.JLabel();
         Usos = new javax.swing.JLabel();
-
-        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        setMaximumSize(new java.awt.Dimension(200, 103));
-
-        Tipo.setText("Tipo:");
 
         Potencia.setText("Potencia:");
 
@@ -59,30 +45,26 @@ public class WeaponView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Usos)
-                    .addComponent(Potencia)
-                    .addComponent(Tipo))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addComponent(Potencia))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(Tipo)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
                 .addComponent(Potencia)
                 .addGap(18, 18, 18)
                 .addComponent(Usos)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Potencia;
-    private javax.swing.JLabel Tipo;
     private javax.swing.JLabel Usos;
     // End of variables declaration//GEN-END:variables
 }
