@@ -9,7 +9,8 @@ import deepspace.ShieldToUI;
  * @author diegoos_03
  */
 public class ShieldView extends javax.swing.JPanel {
-
+    
+    private boolean selected = false;
     /**
      * Creates new form ShieldView
      */
@@ -23,6 +24,8 @@ public class ShieldView extends javax.swing.JPanel {
         Usos.setText("Usos: " + Integer.toString(s.getUses()));
         repaint();
     }
+    
+    public boolean isSelected(){ return selected; }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,6 +38,14 @@ public class ShieldView extends javax.swing.JPanel {
 
         Potencia = new javax.swing.JLabel();
         Usos = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 204, 204));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         Potencia.setText("Potencia:");
 
@@ -49,7 +60,7 @@ public class ShieldView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Usos)
                     .addComponent(Potencia))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -58,9 +69,16 @@ public class ShieldView extends javax.swing.JPanel {
                 .addComponent(Potencia)
                 .addGap(18, 18, 18)
                 .addComponent(Usos)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        selected = !selected;
+        setOpaque (selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

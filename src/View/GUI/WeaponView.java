@@ -10,7 +10,8 @@ import deepspace.WeaponToUI;
  * @author diegoos_03
  */
 public class WeaponView extends javax.swing.JPanel {
-
+    
+    private boolean selected = false;
     /**
      * Creates new form WeaponView
      */
@@ -32,6 +33,8 @@ public class WeaponView extends javax.swing.JPanel {
         repaint();
     }
     
+    public boolean isSelected(){ return selected; }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,8 +48,14 @@ public class WeaponView extends javax.swing.JPanel {
         Potencia = new javax.swing.JLabel();
         Usos = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         setMaximumSize(new java.awt.Dimension(200, 103));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         Tipo.setText("Tipo:");
 
@@ -78,6 +87,13 @@ public class WeaponView extends javax.swing.JPanel {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        selected = !selected;
+        setOpaque (selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

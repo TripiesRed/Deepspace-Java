@@ -5,6 +5,7 @@
 package View.GUI;
 
 import deepspace.ShieldToUI;
+import java.awt.Component;
 import java.util.ArrayList;
 
 /**
@@ -33,6 +34,18 @@ public class ShieldsView extends javax.swing.JPanel {
         
         repaint();
         revalidate();
+    }
+
+    public ArrayList<Integer> getSelectedBoxes () {
+        ArrayList<Integer> selectedBoxes = new ArrayList<>();
+        int i = 0;
+        for (Component c : Interior.getComponents()) {
+            if (((ShieldView) c).isSelected()) {
+                selectedBoxes.add(i);
+            }
+            i++;
+        }
+        return selectedBoxes;
     }
 
     /**
