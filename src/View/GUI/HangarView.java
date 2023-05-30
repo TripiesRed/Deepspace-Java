@@ -7,6 +7,7 @@ package View.GUI;
 import deepspace.HangarToUI;
 import deepspace.WeaponToUI;
 import deepspace.ShieldToUI;
+import java.awt.Component;
 import java.util.ArrayList;
 
 /**
@@ -52,6 +53,17 @@ public class HangarView extends javax.swing.JPanel {
         revalidate();
     }
 
+    public ArrayList<Integer> getSelectedBoxes () {
+        ArrayList<Integer> selectedBoxes = new ArrayList<>();
+        int i = 0;
+        for (Component c : Interior.getComponents()) {
+            if (((ShieldView) c).isSelected()) {
+                selectedBoxes.add(i);
+            }
+            i++;
+        }
+        return selectedBoxes;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
