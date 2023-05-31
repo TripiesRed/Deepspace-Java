@@ -51,7 +51,7 @@ public class WeaponView extends javax.swing.JPanel {
         setBackground(java.awt.Color.lightGray);
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setMaximumSize(new java.awt.Dimension(200, 103));
+        setMaximumSize(new java.awt.Dimension(200, 100));
         setPreferredSize(new java.awt.Dimension(100, 100));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

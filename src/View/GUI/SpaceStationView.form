@@ -7,6 +7,9 @@
         <LineBorder/>
       </Border>
     </Property>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[650, 800]"/>
+    </Property>
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -26,6 +29,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Defensas" max="-2" attributes="0"/>
+                  <Component id="Armas" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="Equipar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -33,26 +38,22 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="DescartarHangar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="Defensas" max="32767" attributes="0"/>
-                      <Component id="Armas" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Medallas" min="-2" max="-2" attributes="0"/>
-                              <Component id="Combustible" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="Ataque" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="Titulo" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Defensa" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Medallas" min="-2" max="-2" attributes="0"/>
+                          <Component id="Combustible" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="Ataque" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="Titulo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Defensa" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="Daño" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="Hangar" alignment="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                      <Component id="Daño" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="Hangar" alignment="0" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,11 +75,11 @@
                   </Group>
                   <Component id="Daño" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Armas" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="Defensas" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="Hangar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -167,14 +168,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="Armas">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Potenciadores de fuego"/>
-          </Border>
-        </Property>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[549, 100]"/>
+          <Dimension value="[600, 120]"/>
         </Property>
       </Properties>
 
@@ -182,13 +178,8 @@
     </Container>
     <Container class="javax.swing.JPanel" name="Defensas">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Potenciadores de defensa"/>
-          </Border>
-        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[549, 100]"/>
+          <Dimension value="[600, 120]"/>
         </Property>
       </Properties>
 
@@ -196,13 +187,8 @@
     </Container>
     <Container class="javax.swing.JPanel" name="Hangar">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Hangar"/>
-          </Border>
-        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[549, 100]"/>
+          <Dimension value="[600, 320]"/>
         </Property>
       </Properties>
 

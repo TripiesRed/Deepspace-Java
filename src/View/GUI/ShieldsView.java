@@ -61,6 +61,7 @@ public class ShieldsView extends javax.swing.JPanel {
         Interior = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Potenciadores de defensa"));
+        setPreferredSize(new java.awt.Dimension(600, 120));
 
         Scroll.setViewportView(Interior);
 

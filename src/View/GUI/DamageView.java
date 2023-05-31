@@ -23,8 +23,15 @@ public class DamageView extends javax.swing.JPanel {
 
     public void setDamageView(DamageToUI d){
         
-        Escudos.setText("Escudos: " + Integer.toString(d.getNShields()));
-        Armas.setText("Armas: " + d.getWeaponInfo());
+        if(d == null){
+            
+        }
+        
+        else{
+            
+            Escudos.setText("Escudos: " + Integer.toString(d.getNShields()));
+            Armas.setText("Armas: " + d.getWeaponInfo());
+        }
         
         repaint();
     }

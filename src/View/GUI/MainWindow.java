@@ -6,8 +6,7 @@
 package View.GUI;
 import View.View;
 import controller.ControllerGUI;
-import deepspace.GameUniverse;
-import deepspace.WeaponToUI;
+import deepspace.GameUniverseToUI;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +18,7 @@ import javax.swing.JOptionPane;
 public class MainWindow extends javax.swing.JFrame implements View {
     
     private static MainWindow instance = null;
+    private static GameUniverseToUI gameUI;
     public static MainWindow getInstance (){
         if(instance == null)
             instance = new MainWindow();
@@ -38,6 +38,10 @@ public class MainWindow extends javax.swing.JFrame implements View {
     }  
     
     public void updateView(){
+        gameUI = ControllerGUI.getInstance().getUIversion();
+        SpaceStationView currentSS = new SpaceStationView();
+        currentSS.setEnemyView(gameUI.getCurrentStation());
+        currentStation.add(currentSS);
         
         repaint();
         revalidate();
@@ -63,10 +67,35 @@ public class MainWindow extends javax.swing.JFrame implements View {
     private void initComponents() {
 
         panelPruebas = new javax.swing.JPanel();
+        currentStation = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DeepSpace V1.0");
         setMinimumSize(new java.awt.Dimension(480, 480));
+        setPreferredSize(new java.awt.Dimension(1080, 880));
+
+        panelPruebas.setMinimumSize(new java.awt.Dimension(900, 600));
+        panelPruebas.setPreferredSize(new java.awt.Dimension(1080, 720));
+
+        currentStation.setPreferredSize(new java.awt.Dimension(660, 810));
+
+        javax.swing.GroupLayout panelPruebasLayout = new javax.swing.GroupLayout(panelPruebas);
+        panelPruebas.setLayout(panelPruebasLayout);
+        panelPruebasLayout.setHorizontalGroup(
+            panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPruebasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(414, Short.MAX_VALUE))
+        );
+        panelPruebasLayout.setVerticalGroup(
+            panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPruebasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         getContentPane().add(panelPruebas, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -74,6 +103,7 @@ public class MainWindow extends javax.swing.JFrame implements View {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel currentStation;
     private javax.swing.JPanel panelPruebas;
     // End of variables declaration//GEN-END:variables
 
