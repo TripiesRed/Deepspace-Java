@@ -9,7 +9,8 @@ import deepspace.ShieldToUI;
  * @author diegoos_03
  */
 public class ShieldView extends javax.swing.JPanel {
-
+    
+    private boolean selected = false;
     /**
      * Creates new form ShieldView
      */
@@ -23,6 +24,8 @@ public class ShieldView extends javax.swing.JPanel {
         Usos.setText("Usos: " + Integer.toString(s.getUses()));
         repaint();
     }
+    
+    public boolean isSelected(){ return selected; }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +39,16 @@ public class ShieldView extends javax.swing.JPanel {
         Potencia = new javax.swing.JLabel();
         Usos = new javax.swing.JLabel();
 
+        setBackground(java.awt.Color.lightGray);
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setPreferredSize(new java.awt.Dimension(100, 100));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+
         Potencia.setText("Potencia:");
 
         Usos.setText("Usos:");
@@ -45,22 +58,29 @@ public class ShieldView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Usos)
                     .addComponent(Potencia))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(24, 24, 24)
                 .addComponent(Potencia)
                 .addGap(18, 18, 18)
                 .addComponent(Usos)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        selected = !selected;
+        setOpaque (selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

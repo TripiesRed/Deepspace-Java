@@ -10,7 +10,8 @@ import deepspace.WeaponToUI;
  * @author diegoos_03
  */
 public class WeaponView extends javax.swing.JPanel {
-
+    
+    private boolean selected = false;
     /**
      * Creates new form WeaponView
      */
@@ -32,6 +33,8 @@ public class WeaponView extends javax.swing.JPanel {
         repaint();
     }
     
+    public boolean isSelected(){ return selected; }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,10 +48,16 @@ public class WeaponView extends javax.swing.JPanel {
         Potencia = new javax.swing.JLabel();
         Usos = new javax.swing.JLabel();
 
+        setBackground(java.awt.Color.lightGray);
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        setMaximumSize(new java.awt.Dimension(200, 100));
-        setMinimumSize(new java.awt.Dimension(185, 140));
-        setPreferredSize(new java.awt.Dimension(185, 140));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setMaximumSize(new java.awt.Dimension(200, 103));
+        setPreferredSize(new java.awt.Dimension(100, 100));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         Tipo.setText("Tipo:");
 
@@ -61,25 +70,32 @@ public class WeaponView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Usos)
+                    .addComponent(Tipo)
                     .addComponent(Potencia)
-                    .addComponent(Tipo))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addComponent(Usos))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(12, 12, 12)
                 .addComponent(Tipo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Potencia)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Usos)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        selected = !selected;
+        setOpaque (selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

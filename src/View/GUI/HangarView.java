@@ -7,6 +7,7 @@ package View.GUI;
 import deepspace.HangarToUI;
 import deepspace.WeaponToUI;
 import deepspace.ShieldToUI;
+import java.awt.Component;
 import java.util.ArrayList;
 
 /**
@@ -24,42 +25,58 @@ public class HangarView extends javax.swing.JPanel {
     
     public void setHangarView(HangarToUI h){
         
-        if(h != null){
-            setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar con " + 
-                                Integer.toString(h.getMaxElements()) + " lugares"));
-
-            Interior.removeAll();
-            ArrayList<WeaponToUI> w;
-            ArrayList<ShieldToUI> s;
-
-            w = h.getWeapons();
-            s = h.getShieldBoosters();
-
-            WeaponView wv;
-            for(WeaponToUI weapon : w){
-                wv = new WeaponView();
-                wv.setWeaponView(weapon);
-                Interior.add(wv);
-            }
-
-            ShieldView sv;
-            for(ShieldToUI shield : s){
-                sv = new ShieldView();
-                sv.setShieldView(shield);
-                Interior.add(sv);
-            }
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar con " + 
+                            Integer.toString(h.getMaxElements()) + " lugares"));
+        
+        InteriorWeapons.removeAll();
+        InteriorShields.removeAll();
+        ArrayList<WeaponToUI> w;
+        ArrayList<ShieldToUI> s;
+        
+        w = h.getWeapons();
+        s = h.getShieldBoosters();
+        
+        WeaponView wv;
+        for(WeaponToUI weapon : w){
+            wv = new WeaponView();
+            wv.setWeaponView(weapon);
+            InteriorWeapons.add(wv);
         }
         
-        else{
-            setBorder(javax.swing.BorderFactory.createTitledBorder("No hay hangar disponible "));
-            //Interior.removeAll();
-            jtEmpty.setText("Vacio");
+        ShieldView sv;
+        for(ShieldToUI shield : s){
+            sv = new ShieldView();
+            sv.setShieldView(shield);
+            InteriorShields.add(sv);
         }
         
         repaint();
         revalidate();
     }
 
+    public ArrayList<Integer> getSelectedBoxesWeapons () {
+        ArrayList<Integer> selectedBoxes = new ArrayList<>();
+        int i = 0;
+        for (Component c : InteriorWeapons.getComponents()) {
+            if (((WeaponView) c).isSelected()) {
+                selectedBoxes.add(i);
+            }
+            i++;
+        }
+        return selectedBoxes;
+    }
+    
+    public ArrayList<Integer> getSelectedBoxesShields () {
+        ArrayList<Integer> selectedBoxes = new ArrayList<>();
+        int i = 0;
+        for (Component c : InteriorWeapons.getComponents()) {
+            if (((ShieldView) c).isSelected()) {
+                selectedBoxes.add(i);
+            }
+            i++;
+        }
+        return selectedBoxes;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,33 +86,49 @@ public class HangarView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Scroll = new javax.swing.JScrollPane();
-        Interior = new javax.swing.JPanel();
-        jtEmpty = new javax.swing.JLabel();
+        ScrollWeapons = new javax.swing.JScrollPane();
+        InteriorWeapons = new javax.swing.JPanel();
+        ScrollShields = new javax.swing.JScrollPane();
+        InteriorShields = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar"));
 
-        Interior.setPreferredSize(new java.awt.Dimension(566, 200));
-        Interior.add(jtEmpty);
+        ScrollWeapons.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        ScrollWeapons.setPreferredSize(new java.awt.Dimension(378, 120));
 
-        Scroll.setViewportView(Interior);
+        InteriorWeapons.setBorder(javax.swing.BorderFactory.createTitledBorder("Armas"));
+        ScrollWeapons.setViewportView(InteriorWeapons);
+
+        InteriorShields.setBorder(javax.swing.BorderFactory.createTitledBorder("Escudos"));
+        ScrollShields.setViewportView(InteriorShields);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ScrollWeapons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ScrollShields))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Scroll, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(ScrollWeapons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(ScrollShields, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Interior;
-    private javax.swing.JScrollPane Scroll;
-    private javax.swing.JLabel jtEmpty;
+    private javax.swing.JPanel InteriorShields;
+    private javax.swing.JPanel InteriorWeapons;
+    private javax.swing.JScrollPane ScrollShields;
+    private javax.swing.JScrollPane ScrollWeapons;
     // End of variables declaration//GEN-END:variables
 }

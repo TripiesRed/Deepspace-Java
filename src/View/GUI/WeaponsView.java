@@ -5,6 +5,7 @@
 package View.GUI;
 
 import deepspace.WeaponToUI;
+import java.awt.Component;
 import java.util.ArrayList;
 
 /**
@@ -34,6 +35,18 @@ public class WeaponsView extends javax.swing.JPanel {
         repaint();
         revalidate();
     }
+    
+    public ArrayList<Integer> getSelectedBoxes () {
+        ArrayList<Integer> selectedBoxes = new ArrayList<>();
+        int i = 0;
+        for (Component c : Interior.getComponents()) {
+            if (((WeaponView) c).isSelected()) {
+                selectedBoxes.add(i);
+            }
+            i++;
+        }
+        return selectedBoxes;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,8 +63,6 @@ public class WeaponsView extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Potenciadores de fuego"));
         setLayout(new java.awt.BorderLayout());
 
-        Interior.setMinimumSize(new java.awt.Dimension(570, 140));
-        Interior.setPreferredSize(new java.awt.Dimension(570, 140));
         Scroll.setViewportView(Interior);
 
         add(Scroll, java.awt.BorderLayout.CENTER);

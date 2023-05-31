@@ -5,6 +5,7 @@
 package View.GUI;
 
 import deepspace.ShieldToUI;
+import java.awt.Component;
 import java.util.ArrayList;
 
 /**
@@ -35,6 +36,18 @@ public class ShieldsView extends javax.swing.JPanel {
         revalidate();
     }
 
+    public ArrayList<Integer> getSelectedBoxes () {
+        ArrayList<Integer> selectedBoxes = new ArrayList<>();
+        int i = 0;
+        for (Component c : Interior.getComponents()) {
+            if (((ShieldView) c).isSelected()) {
+                selectedBoxes.add(i);
+            }
+            i++;
+        }
+        return selectedBoxes;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,13 +61,19 @@ public class ShieldsView extends javax.swing.JPanel {
         Interior = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Potenciadores de defensa"));
-        setLayout(new java.awt.BorderLayout());
 
-        Interior.setMinimumSize(new java.awt.Dimension(570, 140));
-        Interior.setPreferredSize(new java.awt.Dimension(570, 140));
         Scroll.setViewportView(Interior);
 
-        add(Scroll, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
