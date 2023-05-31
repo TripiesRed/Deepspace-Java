@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package View.GUI;
+import controller.Controller;
 import deepspace.SpaceStationToUI;
+import java.util.ArrayList;
 
 /**
  *
@@ -208,14 +210,34 @@ public class SpaceStationView extends javax.swing.JPanel {
 
     private void EquiparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquiparActionPerformed
         // TODO add your handling code here:
+        ArrayList<Integer> w, s;
+        w = weapons_view.getSelectedBoxes();
+        
+        s = shields_view.getSelectedBoxes();
+        Controller.getInstance().mount(w, s);
     }//GEN-LAST:event_EquiparActionPerformed
 
     private void DescartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescartarActionPerformed
         // TODO add your handling code here:
+        ArrayList<Integer> w, s;
+        w = weapons_view.getSelectedBoxes();
+        s = shields_view.getSelectedBoxes();
+        
+        Controller.getInstance().discard(Controller.WEAPON, w, w);
+        Controller.getInstance().discard(Controller.SHIELD, s, s);
+        
+        ArrayList<Integer> wh, sh;
+        wh = hangar_view.getSelectedBoxesWeapons();
+        sh = hangar_view.getSelectedBoxesShields();
+        Controller.getInstance().discard(Controller.HANGAR, wh, sh);       
+   
+        MainWindow.getInstance().updateView();
     }//GEN-LAST:event_DescartarActionPerformed
 
     private void DescartarHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescartarHangarActionPerformed
         // TODO add your handling code here:
+        Controller.getInstance().discardHangar();
+        MainWindow.getInstance().updateView();
     }//GEN-LAST:event_DescartarHangarActionPerformed
 
 
