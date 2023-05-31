@@ -52,7 +52,7 @@ public class WeaponView extends javax.swing.JPanel {
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(new java.awt.Dimension(200, 100));
-        setPreferredSize(new java.awt.Dimension(100, 100));
+        setPreferredSize(new java.awt.Dimension(120, 95));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -75,7 +75,7 @@ public class WeaponView extends javax.swing.JPanel {
                     .addComponent(Tipo)
                     .addComponent(Potencia)
                     .addComponent(Usos))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +86,7 @@ public class WeaponView extends javax.swing.JPanel {
                 .addComponent(Potencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Usos)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -36,7 +36,7 @@ public class SpaceStationView extends javax.swing.JPanel {
         add(hangar_view);
     }
     
-    public void setEnemyView(SpaceStationToUI s){
+    public void setSpaceStationView(SpaceStationToUI s){
         
         Titulo.setText(s.getName());
         Ataque.setText("Potencia de ataque: " + Float.toString(s.getAmmoPower()));

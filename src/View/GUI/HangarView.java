@@ -56,6 +56,7 @@ public class HangarView extends javax.swing.JPanel {
                 InteriorShields.add(sv);
             }
         }
+        
         repaint();
         revalidate();
     }

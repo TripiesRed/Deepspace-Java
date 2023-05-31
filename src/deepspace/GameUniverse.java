@@ -147,7 +147,7 @@ public class GameUniverse {
                 
                 spaceStations.add(station);
                 
-                int nh = 0; //dice.initWithNHangars();
+                int nh = 1; //dice.initWithNHangars();
                 int nw = 2;//dice.initWithNWeapons();
                 int ns = 2;//dice.initWithNShields();
                 
