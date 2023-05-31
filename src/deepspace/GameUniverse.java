@@ -147,9 +147,9 @@ public class GameUniverse {
                 
                 spaceStations.add(station);
                 
-                int nh = dice.initWithNHangars();
-                int nw = dice.initWithNWeapons();
-                int ns = dice.initWithNShields();
+                int nh = 0; //dice.initWithNHangars();
+                int nw = 2;//dice.initWithNWeapons();
+                int ns = 2;//dice.initWithNShields();
                 
                 Loot lo = new Loot(0, nw, ns, nh, 0);
                 

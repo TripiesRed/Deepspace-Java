@@ -46,7 +46,9 @@ public class WeaponView extends javax.swing.JPanel {
         Usos = new javax.swing.JLabel();
 
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        setMaximumSize(new java.awt.Dimension(200, 103));
+        setMaximumSize(new java.awt.Dimension(200, 100));
+        setMinimumSize(new java.awt.Dimension(185, 140));
+        setPreferredSize(new java.awt.Dimension(185, 140));
 
         Tipo.setText("Tipo:");
 
@@ -75,7 +77,7 @@ public class WeaponView extends javax.swing.JPanel {
                 .addComponent(Potencia)
                 .addGap(18, 18, 18)
                 .addComponent(Usos)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

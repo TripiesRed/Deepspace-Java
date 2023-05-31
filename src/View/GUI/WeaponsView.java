@@ -50,6 +50,8 @@ public class WeaponsView extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Potenciadores de fuego"));
         setLayout(new java.awt.BorderLayout());
 
+        Interior.setMinimumSize(new java.awt.Dimension(570, 140));
+        Interior.setPreferredSize(new java.awt.Dimension(570, 140));
         Scroll.setViewportView(Interior);
 
         add(Scroll, java.awt.BorderLayout.CENTER);

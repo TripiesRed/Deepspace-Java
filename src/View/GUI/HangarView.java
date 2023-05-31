@@ -24,28 +24,36 @@ public class HangarView extends javax.swing.JPanel {
     
     public void setHangarView(HangarToUI h){
         
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar con " + 
-                            Integer.toString(h.getMaxElements()) + " lugares"));
-        
-        Interior.removeAll();
-        ArrayList<WeaponToUI> w;
-        ArrayList<ShieldToUI> s;
-        
-        w = h.getWeapons();
-        s = h.getShieldBoosters();
-        
-        WeaponView wv;
-        for(WeaponToUI weapon : w){
-            wv = new WeaponView();
-            wv.setWeaponView(weapon);
-            Interior.add(wv);
+        if(h != null){
+            setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar con " + 
+                                Integer.toString(h.getMaxElements()) + " lugares"));
+
+            Interior.removeAll();
+            ArrayList<WeaponToUI> w;
+            ArrayList<ShieldToUI> s;
+
+            w = h.getWeapons();
+            s = h.getShieldBoosters();
+
+            WeaponView wv;
+            for(WeaponToUI weapon : w){
+                wv = new WeaponView();
+                wv.setWeaponView(weapon);
+                Interior.add(wv);
+            }
+
+            ShieldView sv;
+            for(ShieldToUI shield : s){
+                sv = new ShieldView();
+                sv.setShieldView(shield);
+                Interior.add(sv);
+            }
         }
         
-        ShieldView sv;
-        for(ShieldToUI shield : s){
-            sv = new ShieldView();
-            sv.setShieldView(shield);
-            Interior.add(sv);
+        else{
+            setBorder(javax.swing.BorderFactory.createTitledBorder("No hay hangar disponible "));
+            //Interior.removeAll();
+            jtEmpty.setText("Vacio");
         }
         
         repaint();
@@ -63,8 +71,12 @@ public class HangarView extends javax.swing.JPanel {
 
         Scroll = new javax.swing.JScrollPane();
         Interior = new javax.swing.JPanel();
+        jtEmpty = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar"));
+
+        Interior.setPreferredSize(new java.awt.Dimension(566, 200));
+        Interior.add(jtEmpty);
 
         Scroll.setViewportView(Interior);
 
@@ -72,11 +84,11 @@ public class HangarView extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .addComponent(Scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+            .addComponent(Scroll, javax.swing.GroupLayout.Alignment.TRAILING)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -84,5 +96,6 @@ public class HangarView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Interior;
     private javax.swing.JScrollPane Scroll;
+    private javax.swing.JLabel jtEmpty;
     // End of variables declaration//GEN-END:variables
 }

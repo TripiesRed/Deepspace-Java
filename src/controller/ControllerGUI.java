@@ -5,9 +5,9 @@
 package controller;
 
 import View.GUI.MainWindow;
-import deepspace.LootToUI;
-import deepspace.WeaponToUI;
+import deepspace.GameUniverseToUI;
 import deepspace.GameUniverse;
+import deepspace.LootToUI;
 
 /**
  *
@@ -44,12 +44,12 @@ public class ControllerGUI {
         System.exit(i);
     }
     
-    public LootToUI getLoot(){
-        return game.getALoot();
+    public GameUniverseToUI getUIversion(){
+        return game.getUIversion();
     }
     
-    public WeaponToUI getWeapon(){
-        return game.getWeapon();
+    public LootToUI getLoot(){
+        return game.getALoot();
     }
       
 }

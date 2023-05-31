@@ -48,19 +48,13 @@ public class ShieldsView extends javax.swing.JPanel {
         Interior = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Potenciadores de defensa"));
+        setLayout(new java.awt.BorderLayout());
 
+        Interior.setMinimumSize(new java.awt.Dimension(570, 140));
+        Interior.setPreferredSize(new java.awt.Dimension(570, 140));
         Scroll.setViewportView(Interior);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-        );
+        add(Scroll, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
