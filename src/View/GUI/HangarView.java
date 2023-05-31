@@ -73,28 +73,49 @@ public class HangarView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Scroll = new javax.swing.JScrollPane();
-        Interior = new javax.swing.JPanel();
+        ScrollWeapons = new javax.swing.JScrollPane();
+        InteriorWeapons = new javax.swing.JPanel();
+        ScrollShields = new javax.swing.JScrollPane();
+        InteriorShields = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar"));
 
-        Scroll.setViewportView(Interior);
+        ScrollWeapons.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        ScrollWeapons.setPreferredSize(new java.awt.Dimension(378, 120));
+
+        InteriorWeapons.setBorder(javax.swing.BorderFactory.createTitledBorder("Armas"));
+        ScrollWeapons.setViewportView(InteriorWeapons);
+
+        InteriorShields.setBorder(javax.swing.BorderFactory.createTitledBorder("Escudos"));
+        ScrollShields.setViewportView(InteriorShields);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ScrollWeapons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ScrollShields))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(ScrollWeapons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(ScrollShields, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Interior;
-    private javax.swing.JScrollPane Scroll;
+    private javax.swing.JPanel InteriorShields;
+    private javax.swing.JPanel InteriorWeapons;
+    private javax.swing.JScrollPane ScrollShields;
+    private javax.swing.JScrollPane ScrollWeapons;
     // End of variables declaration//GEN-END:variables
 }
