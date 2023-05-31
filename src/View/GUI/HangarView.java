@@ -28,7 +28,8 @@ public class HangarView extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Hangar con " + 
                             Integer.toString(h.getMaxElements()) + " lugares"));
         
-        Interior.removeAll();
+        InteriorWeapons.removeAll();
+        InteriorShields.removeAll();
         ArrayList<WeaponToUI> w;
         ArrayList<ShieldToUI> s;
         
@@ -39,24 +40,36 @@ public class HangarView extends javax.swing.JPanel {
         for(WeaponToUI weapon : w){
             wv = new WeaponView();
             wv.setWeaponView(weapon);
-            Interior.add(wv);
+            InteriorWeapons.add(wv);
         }
         
         ShieldView sv;
         for(ShieldToUI shield : s){
             sv = new ShieldView();
             sv.setShieldView(shield);
-            Interior.add(sv);
+            InteriorShields.add(sv);
         }
         
         repaint();
         revalidate();
     }
 
-    public ArrayList<Integer> getSelectedBoxes () {
+    public ArrayList<Integer> getSelectedBoxesWeapons () {
         ArrayList<Integer> selectedBoxes = new ArrayList<>();
         int i = 0;
-        for (Component c : Interior.getComponents()) {
+        for (Component c : InteriorWeapons.getComponents()) {
+            if (((WeaponView) c).isSelected()) {
+                selectedBoxes.add(i);
+            }
+            i++;
+        }
+        return selectedBoxes;
+    }
+    
+    public ArrayList<Integer> getSelectedBoxesShields () {
+        ArrayList<Integer> selectedBoxes = new ArrayList<>();
+        int i = 0;
+        for (Component c : InteriorWeapons.getComponents()) {
             if (((ShieldView) c).isSelected()) {
                 selectedBoxes.add(i);
             }
