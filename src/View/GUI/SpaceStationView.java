@@ -215,6 +215,7 @@ public class SpaceStationView extends javax.swing.JPanel {
         
         s = shields_view.getSelectedBoxes();
         Controller.getInstance().mount(w, s);
+        MainWindow.getInstance().updateView();        
     }//GEN-LAST:event_EquiparActionPerformed
 
     private void DescartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescartarActionPerformed
