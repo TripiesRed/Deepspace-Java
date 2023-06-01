@@ -5,6 +5,7 @@
 
 package View.GUI;
 import View.View;
+import controller.Controller;
 import controller.ControllerGUI;
 import deepspace.GameUniverseToUI;
 import java.util.ArrayList;
@@ -74,11 +75,13 @@ public class MainWindow extends javax.swing.JFrame implements View {
         panelPruebas = new javax.swing.JPanel();
         currentStation = new javax.swing.JPanel();
         currentEnemy = new javax.swing.JPanel();
+        Combatir = new javax.swing.JButton();
+        Siguiente = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DeepSpace V1.0");
         setMinimumSize(new java.awt.Dimension(480, 480));
-        setPreferredSize(new java.awt.Dimension(1240, 880));
 
         panelPruebas.setMinimumSize(new java.awt.Dimension(900, 600));
         panelPruebas.setPreferredSize(new java.awt.Dimension(1080, 720));
@@ -86,6 +89,34 @@ public class MainWindow extends javax.swing.JFrame implements View {
         currentStation.setPreferredSize(new java.awt.Dimension(660, 810));
 
         currentEnemy.setPreferredSize(new java.awt.Dimension(550, 500));
+
+        Combatir.setBackground(new java.awt.Color(51, 153, 255));
+        Combatir.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        Combatir.setForeground(new java.awt.Color(204, 255, 255));
+        Combatir.setText("COMBATIR");
+        Combatir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CombatirActionPerformed(evt);
+            }
+        });
+
+        Siguiente.setBackground(new java.awt.Color(51, 153, 255));
+        Siguiente.setForeground(new java.awt.Color(204, 255, 255));
+        Siguiente.setText("Siguiente turno");
+        Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SiguienteActionPerformed(evt);
+            }
+        });
+
+        Salir.setBackground(new java.awt.Color(255, 0, 0));
+        Salir.setForeground(new java.awt.Color(255, 255, 255));
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPruebasLayout = new javax.swing.GroupLayout(panelPruebas);
         panelPruebas.setLayout(panelPruebasLayout);
@@ -95,15 +126,28 @@ public class MainWindow extends javax.swing.JFrame implements View {
                 .addContainerGap()
                 .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(currentEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(currentEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelPruebasLayout.createSequentialGroup()
+                        .addComponent(Combatir)
+                        .addGap(31, 31, 31)
+                        .addGroup(panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Salir)
+                            .addComponent(Siguiente)))))
         );
         panelPruebasLayout.setVerticalGroup(
             panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPruebasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(currentEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelPruebasLayout.createSequentialGroup()
+                        .addComponent(currentEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(134, 134, 134)
+                        .addGroup(panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Combatir)
+                            .addComponent(Siguiente))
+                        .addGap(18, 18, 18)
+                        .addComponent(Salir))
                     .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -112,8 +156,28 @@ public class MainWindow extends javax.swing.JFrame implements View {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CombatirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CombatirActionPerformed
+        // TODO add your handling code here:
+        Controller.getInstance().combat();
+        MainWindow.getInstance().updateView();
+    }//GEN-LAST:event_CombatirActionPerformed
+
+    private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
+        // TODO add your handling code here:
+        Controller.getInstance().nextTurn();
+        MainWindow.getInstance().updateView();
+    }//GEN-LAST:event_SiguienteActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        Controller.getInstance().finish(0);
+    }//GEN-LAST:event_SalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Combatir;
+    private javax.swing.JButton Salir;
+    private javax.swing.JButton Siguiente;
     private javax.swing.JPanel currentEnemy;
     private javax.swing.JPanel currentStation;
     private javax.swing.JPanel panelPruebas;
