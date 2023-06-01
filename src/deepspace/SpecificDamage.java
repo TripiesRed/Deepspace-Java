@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class SpecificDamage extends Damage {
     
     SpecificDamage(ArrayList<WeaponType> weapons, int s){
-        super(weapons.size(), s);
+        super(s,weapons.size());
         setWeapons(weapons);
     }
     
@@ -88,7 +88,7 @@ public class SpecificDamage extends Damage {
         return pos;
     }
     
-    private int arrayContainsTypewt (ArrayList<WeaponType> w, WeaponType t) {
+    private int arrayContainsTypewt(ArrayList<WeaponType> w, WeaponType t) {
         
         int pos = -1;
         boolean encontrado = false;
