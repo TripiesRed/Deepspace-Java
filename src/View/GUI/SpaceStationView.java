@@ -203,8 +203,8 @@ public class SpaceStationView extends javax.swing.JPanel {
     private void EquiparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquiparActionPerformed
         // TODO add your handling code here:
         ArrayList<Integer> w, s;
-        w = weapons_view.getSelectedBoxes();
-        s = shields_view.getSelectedBoxes();
+        w = hangar_view.getSelectedBoxesWeapons();
+        s = hangar_view.getSelectedBoxesShields();
         
         Controller.getInstance().mount(w, s);
         MainWindow.getInstance().updateView();        
