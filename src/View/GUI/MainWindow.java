@@ -7,6 +7,7 @@ package View.GUI;
 import View.DeepSpaceView;
 import controller.Controller;
 import deepspace.GameUniverseToUI;
+import deepspace.GameState;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -235,7 +236,10 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     
     @Override
     public void nextTurnNotAllowedMessage() {
-        JOptionPane.showMessageDialog(this, "Aún tienes un castigo pendiente.", "No puedes pasar de turno", JOptionPane.OK_OPTION);
+        if(Controller.getInstance().getState() == GameState.INIT)
+            JOptionPane.showMessageDialog(this, "Primero debes iniciar un combate", "No puedes pasar de turno", JOptionPane.OK_OPTION);
+        else
+            JOptionPane.showMessageDialog(this, "Aún tienes un castigo pendiente.", "No puedes pasar de turno", JOptionPane.OK_OPTION);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

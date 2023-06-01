@@ -33,7 +33,7 @@ class GameStateController {
                 break;
             case AFTERCOMBAT: 
                 if (turn>=nPlayers)
-                    state=GameState.BEFORECOMBAT;
+                    state=GameState.AFTERCOMBAT;
                 else
                     state=GameState.INIT;
                 break;                
