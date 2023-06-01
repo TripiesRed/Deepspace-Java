@@ -35,7 +35,7 @@ public class ControllerGUI {
     }
     
     public void start() {
-        game.init(view.getNames());
+        game.init(view.readNamePlayers());
         view.updateView();
         view.showView();
     }

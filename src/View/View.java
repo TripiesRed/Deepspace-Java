@@ -20,5 +20,5 @@ import java.util.ArrayList;
 public interface View {
   public void updateView();
   public void showView();
-  public ArrayList<String> getNames();
+  public ArrayList<String> readNamePlayers();
 }

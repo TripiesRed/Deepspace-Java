@@ -4,9 +4,9 @@
  */
 
 package View.GUI;
+import View.DeepSpaceView;
 import View.View;
 import controller.Controller;
-import controller.ControllerGUI;
 import deepspace.GameUniverseToUI;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -20,28 +20,37 @@ public class MainWindow extends javax.swing.JFrame implements View {
     
     private static MainWindow instance = null;
     private static GameUniverseToUI gameUI;
+    
     public static MainWindow getInstance (){
         if(instance == null)
             instance = new MainWindow();
         
         return instance;
     }
+    
     /** Creates new form MainWindow */
+    private SpaceStationView currentSS;
+    private EnemyView currentEn;
+    
     public MainWindow(){
         initComponents();
+        
+        currentSS = new SpaceStationView();
+        currentEn = new EnemyView();
+        
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                ControllerGUI.getInstance().finish(0);
+                Controller.getInstance().finish(0);
             }
         });
     }  
     
+    @Override
     public void updateView(){
-        gameUI = ControllerGUI.getInstance().getUIversion();
-        SpaceStationView currentSS = new SpaceStationView();
-        EnemyView currentEn = new EnemyView();
+        
+        gameUI = Controller.getInstance().getUIversion();
         
         currentEn.setEnemyView(gameUI.getCurrentEnemy());
         currentSS.setSpaceStationView(gameUI.getCurrentStation());
@@ -51,14 +60,15 @@ public class MainWindow extends javax.swing.JFrame implements View {
         
         repaint();
         revalidate();
-    };
+    }
     
+    @Override
     public void showView() {
         this.setVisible(true);
     }
     
     @Override
-    public ArrayList<String> getNames() {
+    public ArrayList<String> readNamePlayers() {
         NamesCapture namesCapt = new NamesCapture(this);
         return namesCapt.getNames();
     }
@@ -82,17 +92,18 @@ public class MainWindow extends javax.swing.JFrame implements View {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DeepSpace V1.0");
         setMinimumSize(new java.awt.Dimension(480, 480));
+        setPreferredSize(new java.awt.Dimension(1240, 940));
 
         panelPruebas.setMinimumSize(new java.awt.Dimension(900, 600));
-        panelPruebas.setPreferredSize(new java.awt.Dimension(1080, 720));
+        panelPruebas.setPreferredSize(new java.awt.Dimension(1240, 940));
 
         currentStation.setPreferredSize(new java.awt.Dimension(660, 810));
 
         currentEnemy.setPreferredSize(new java.awt.Dimension(550, 500));
 
         Combatir.setBackground(new java.awt.Color(51, 153, 255));
-        Combatir.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
-        Combatir.setForeground(new java.awt.Color(204, 255, 255));
+        Combatir.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
+        Combatir.setForeground(new java.awt.Color(255, 255, 255));
         Combatir.setText("COMBATIR");
         Combatir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,8 +112,9 @@ public class MainWindow extends javax.swing.JFrame implements View {
         });
 
         Siguiente.setBackground(new java.awt.Color(51, 153, 255));
-        Siguiente.setForeground(new java.awt.Color(204, 255, 255));
-        Siguiente.setText("Siguiente turno");
+        Siguiente.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
+        Siguiente.setForeground(new java.awt.Color(255, 255, 255));
+        Siguiente.setText("NEXT TURN");
         Siguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SiguienteActionPerformed(evt);
@@ -110,6 +122,7 @@ public class MainWindow extends javax.swing.JFrame implements View {
         });
 
         Salir.setBackground(new java.awt.Color(255, 0, 0));
+        Salir.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         Salir.setForeground(new java.awt.Color(255, 255, 255));
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -125,15 +138,22 @@ public class MainWindow extends javax.swing.JFrame implements View {
             .addGroup(panelPruebasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(currentEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPruebasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Salir)
+                        .addGap(20, 20, 20))
                     .addGroup(panelPruebasLayout.createSequentialGroup()
-                        .addComponent(Combatir)
-                        .addGap(31, 31, 31)
                         .addGroup(panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Salir)
-                            .addComponent(Siguiente)))))
+                            .addGroup(panelPruebasLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(currentEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelPruebasLayout.createSequentialGroup()
+                                .addGap(165, 165, 165)
+                                .addGroup(panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Combatir, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 42, Short.MAX_VALUE))))
         );
         panelPruebasLayout.setVerticalGroup(
             panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,14 +161,17 @@ public class MainWindow extends javax.swing.JFrame implements View {
                 .addContainerGap()
                 .addGroup(panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPruebasLayout.createSequentialGroup()
+                        .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(panelPruebasLayout.createSequentialGroup()
                         .addComponent(currentEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(134, 134, 134)
-                        .addGroup(panelPruebasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Combatir)
-                            .addComponent(Siguiente))
+                        .addGap(56, 56, 56)
+                        .addComponent(Combatir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Salir))
-                    .addComponent(currentStation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Salir)
+                        .addGap(14, 14, 14))))
         );
 
         getContentPane().add(panelPruebas, java.awt.BorderLayout.CENTER);

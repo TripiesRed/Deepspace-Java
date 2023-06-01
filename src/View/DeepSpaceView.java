@@ -6,6 +6,7 @@
 package View;
 
 import controller.Controller;
+import View.GUI.MainWindow;
 import deepspace.GameUniverse;
 import java.util.ArrayList;
 

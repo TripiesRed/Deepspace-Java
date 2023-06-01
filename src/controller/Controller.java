@@ -5,6 +5,7 @@
  */
 package controller;
 
+import View.GUI.MainWindow;
 import View.DeepSpaceView;
 import deepspace.CombatResult;
 import deepspace.GameState;
@@ -24,7 +25,8 @@ public class Controller {
     public static final int SHIELD = 0x2;
     public static final int HANGAR = 0x4;
     private GameUniverse game;
-    private DeepSpaceView view;
+    private MainWindow view;
+    private DeepSpaceView textview;
     
     private Controller () {}
     
@@ -32,9 +34,14 @@ public class Controller {
       return instance;
     }
     
-    public void setModelView (GameUniverse aGame, DeepSpaceView aView) {
+    public void setModelView (GameUniverse aGame, MainWindow aView) {
       game = aGame;
       view = aView;
+    }
+    
+    public void setModelTextView(GameUniverse aGame, DeepSpaceView aView) {
+      game = aGame;
+      textview = aView;
     }
     
     public void start() {
@@ -44,15 +51,15 @@ public class Controller {
     }
     
     public void finish (int i) {
-        if (view.confirmExitMessage()) {
+        //if (view.confirmExitMessage()) {
           System.exit(i);
-        }
+        //}
     }
       
     public boolean nextTurn () {
       boolean nextTurnAllowed = game.nextTurn();
       if (!nextTurnAllowed) {
-        view.nextTurnNotAllowedMessage();
+        //view.nextTurnNotAllowedMessage();
       }
       return nextTurnAllowed;
     }
@@ -61,23 +68,23 @@ public class Controller {
         CombatResult result = game.combat();
         switch (result) {
             case ENEMYWINS :
-              view.lostCombatMessage();
+              //view.lostCombatMessage();
               break;
             case STATIONESCAPES :
-              view.escapeMessage();
+              //view.escapeMessage();
               break;
             case STATIONWINS :
-              view.wonCombatMessage();
+              //view.wonCombatMessage();
               if (game.haveAWinner()) {
-                  view.wonGameMessage();
+                  //view.wonGameMessage();
                   System.exit (0);
               }
               break;
             case NOCOMBAT :
-              view.noCombatMessage();
+              //view.noCombatMessage();
               break;
             case STATIONWINSANDCONVERTS :
-                view.conversionMessage();
+                //view.conversionMessage();
                 break;
         }
     }

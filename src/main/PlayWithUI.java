@@ -20,7 +20,7 @@ public class PlayWithUI {
       GameUniverse game = new GameUniverse();
       ui = TextMainView.getInstance();
       Controller controller = Controller.getInstance();
-      controller.setModelView(game,ui);
+      controller.setModelTextView(game,ui);
       controller.start();   
     }
   
