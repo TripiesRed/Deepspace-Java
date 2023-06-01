@@ -24,7 +24,8 @@ public class DamageView extends javax.swing.JPanel {
     public void setDamageView(DamageToUI d){
         
         if(d == null){
-            
+            Escudos.setText("Escudos: " + Integer.toString(0));
+            Armas.setText("Armas: " + Integer.toString(0));
         }
         
         else{
@@ -34,6 +35,7 @@ public class DamageView extends javax.swing.JPanel {
         }
         
         repaint();
+        revalidate();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,6 +48,8 @@ public class DamageView extends javax.swing.JPanel {
 
         Escudos = new javax.swing.JLabel();
         Armas = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(308, 90));
 
         Escudos.setText("Escudos: ");
 
@@ -60,16 +64,16 @@ public class DamageView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Armas)
                     .addComponent(Escudos))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(12, 12, 12)
                 .addComponent(Escudos)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Armas)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

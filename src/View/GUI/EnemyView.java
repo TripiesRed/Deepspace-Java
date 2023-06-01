@@ -57,7 +57,7 @@ public class EnemyView extends javax.swing.JPanel {
         Daño = new javax.swing.JPanel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setPreferredSize(new java.awt.Dimension(480, 450));
+        setPreferredSize(new java.awt.Dimension(470, 450));
 
         Enemigo.setText("Enemigo:");
 
@@ -65,7 +65,7 @@ public class EnemyView extends javax.swing.JPanel {
 
         Potencia_escudo.setText("Potencia de defensa:");
 
-        Botín.setPreferredSize(new java.awt.Dimension(470, 192));
+        Botín.setPreferredSize(new java.awt.Dimension(440, 192));
 
         Daño.setPreferredSize(new java.awt.Dimension(390, 100));
 
@@ -74,17 +74,18 @@ public class EnemyView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Daño, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Potencia_escudo)
                             .addComponent(Potencia_fuego)
-                            .addComponent(Enemigo))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(Botín, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                            .addComponent(Enemigo)
+                            .addComponent(Botín, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Daño, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,11 +96,11 @@ public class EnemyView extends javax.swing.JPanel {
                 .addComponent(Potencia_fuego)
                 .addGap(18, 18, 18)
                 .addComponent(Potencia_escudo)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(Botín, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Daño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Daño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13))
         );
     }// </editor-fold>//GEN-END:initComponents
 

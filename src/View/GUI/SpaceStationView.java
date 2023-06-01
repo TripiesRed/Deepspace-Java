@@ -50,9 +50,10 @@ public class SpaceStationView extends javax.swing.JPanel {
         hangar_view.setHangarView(s.getHangar());
         
         Hangar.add(hangar_view);
-        Daño.add(damage_view);
         Defensas.add(shields_view);
         Armas.add(weapons_view);
+        
+        Daño.add(damage_view);
         
         
         repaint();
@@ -101,19 +102,8 @@ public class SpaceStationView extends javax.swing.JPanel {
 
         Medallas.setText("Medallas:");
 
-        Daño.setBackground(new java.awt.Color(153, 153, 153));
-        Daño.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Castigo pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Liberation Sans", 0, 15), new java.awt.Color(255, 255, 255))); // NOI18N
-
-        javax.swing.GroupLayout DañoLayout = new javax.swing.GroupLayout(Daño);
-        Daño.setLayout(DañoLayout);
-        DañoLayout.setHorizontalGroup(
-            DañoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
-        );
-        DañoLayout.setVerticalGroup(
-            DañoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        Daño.setBorder(javax.swing.BorderFactory.createTitledBorder("Castigo Pendiente"));
+        Daño.setPreferredSize(new java.awt.Dimension(320, 135));
 
         Armas.setName(""); // NOI18N
         Armas.setPreferredSize(new java.awt.Dimension(600, 120));
@@ -172,28 +162,30 @@ public class SpaceStationView extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(Titulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Defensa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(143, 143, 143)
-                        .addComponent(Daño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                        .addComponent(Daño, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Hangar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Titulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Ataque)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Defensa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Combustible)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Medallas))
-                    .addComponent(Daño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                        .addComponent(Medallas)
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Daño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(Armas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Defensas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +196,7 @@ public class SpaceStationView extends javax.swing.JPanel {
                     .addComponent(Equipar)
                     .addComponent(Descartar)
                     .addComponent(DescartarHangar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -212,8 +204,8 @@ public class SpaceStationView extends javax.swing.JPanel {
         // TODO add your handling code here:
         ArrayList<Integer> w, s;
         w = weapons_view.getSelectedBoxes();
-        
         s = shields_view.getSelectedBoxes();
+        
         Controller.getInstance().mount(w, s);
         MainWindow.getInstance().updateView();        
     }//GEN-LAST:event_EquiparActionPerformed

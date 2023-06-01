@@ -21,4 +21,10 @@ public interface View {
   public void updateView();
   public void showView();
   public ArrayList<String> readNamePlayers();
+  public void lostCombatMessage();
+  public void escapeMessage();
+  public void wonCombatMessage();
+  public void wonGameMessage();
+  public void conversionMessage();
+  public void noCombatMessage();
 }

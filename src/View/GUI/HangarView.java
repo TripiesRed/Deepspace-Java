@@ -27,6 +27,8 @@ public class HangarView extends javax.swing.JPanel {
         
         if(h == null){
             setBorder(javax.swing.BorderFactory.createTitledBorder("No hay Hangar disponible "));
+            InteriorWeapons.removeAll();
+            InteriorShields.removeAll();
         }
         
         else{
