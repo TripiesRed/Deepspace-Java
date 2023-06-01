@@ -94,8 +94,9 @@ public class WeaponView extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
         selected = !selected;
-        setBackground (Color.BLUE);
+        setBackground (Color.WHITE);
         repaint();
+        revalidate();
     }//GEN-LAST:event_formMouseClicked
 
 

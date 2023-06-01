@@ -4,6 +4,7 @@
  */
 package View.GUI;
 import deepspace.ShieldToUI;
+import java.awt.Color;
 /**
  *
  * @author diegoos_03
@@ -78,8 +79,9 @@ public class ShieldView extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
         selected = !selected;
-        setOpaque (selected);
+        setBackground (Color.WHITE);
         repaint();
+        revalidate();
     }//GEN-LAST:event_formMouseClicked
 
 
