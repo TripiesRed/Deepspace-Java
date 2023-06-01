@@ -200,6 +200,36 @@ public class MainWindow extends javax.swing.JFrame implements View {
     public boolean confirmExitMessage() {
         return (JOptionPane.showConfirmDialog(this, "¿Estás segur@ que deseas salir?", "Advertencia", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
     }
+    
+    @Override
+    public void lostCombatMessage() {
+        JOptionPane.showMessageDialog(this, "Has perdido", "¡Qué pena!", JOptionPane.OK_OPTION);
+    }
+    
+    @Override
+    public void escapeMessage() {
+        JOptionPane.showMessageDialog(this, "Has logrado escapar", "¡Menos mal!", JOptionPane.OK_OPTION);
+    }
+    
+    @Override
+    public void wonCombatMessage() {
+        JOptionPane.showMessageDialog(this, "Has ganado el combate", "¡Disfruta de tu botín!", JOptionPane.OK_OPTION);
+    }
+    
+    @Override
+    public void noCombatMessage() {
+        JOptionPane.showMessageDialog(this, "No puedes combatir en este momento", "Ups", JOptionPane.OK_OPTION);
+    }
+    
+    @Override
+    public void wonGameMessage() {
+        JOptionPane.showMessageDialog(this, "Has ganado la partida", "¡Enhorabuena!", JOptionPane.OK_OPTION);
+    }
+    
+    @Override
+    public void conversionMessage() {
+        JOptionPane.showMessageDialog(this, "Has ganado el combate y te has convertido.", "¡Disfruta de tu botín!", JOptionPane.OK_OPTION);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Combatir;

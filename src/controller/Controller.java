@@ -68,23 +68,23 @@ public class Controller {
         CombatResult result = game.combat();
         switch (result) {
             case ENEMYWINS :
-              //view.lostCombatMessage();
+              view.lostCombatMessage();
               break;
             case STATIONESCAPES :
-              //view.escapeMessage();
+              view.escapeMessage();
               break;
             case STATIONWINS :
-              //view.wonCombatMessage();
+              view.wonCombatMessage();
               if (game.haveAWinner()) {
-                  //view.wonGameMessage();
+                  view.wonGameMessage();
                   System.exit (0);
               }
               break;
             case NOCOMBAT :
-              //view.noCombatMessage();
+              view.noCombatMessage();
               break;
             case STATIONWINSANDCONVERTS :
-                //view.conversionMessage();
+                view.conversionMessage();
                 break;
         }
     }
