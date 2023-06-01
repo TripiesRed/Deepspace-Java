@@ -51,15 +51,15 @@ public class Controller {
     }
     
     public void finish (int i) {
-        //if (view.confirmExitMessage()) {
+        if (view.confirmExitMessage()) {
           System.exit(i);
-        //}
+        }
     }
       
     public boolean nextTurn () {
       boolean nextTurnAllowed = game.nextTurn();
       if (!nextTurnAllowed) {
-        //view.nextTurnNotAllowedMessage();
+        view.nextTurnNotAllowedMessage();
       }
       return nextTurnAllowed;
     }

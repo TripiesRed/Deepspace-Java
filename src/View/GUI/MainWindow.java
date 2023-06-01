@@ -5,7 +5,6 @@
 
 package View.GUI;
 import View.DeepSpaceView;
-import View.View;
 import controller.Controller;
 import deepspace.GameUniverseToUI;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author gonzalomp
  */
-public class MainWindow extends javax.swing.JFrame implements View {
+public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     
     private static MainWindow instance = null;
     private static GameUniverseToUI gameUI;
@@ -199,10 +198,10 @@ public class MainWindow extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_SalirActionPerformed
 
     
-    /*@Override
+    @Override
     public boolean confirmExitMessage() {
         return (JOptionPane.showConfirmDialog(this, "¿Estás segur@ que deseas salir?", "Advertencia", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
-    }*/
+    }
 
     @Override
     public void lostCombatMessage() {
@@ -232,6 +231,11 @@ public class MainWindow extends javax.swing.JFrame implements View {
     @Override
     public void conversionMessage() {
         JOptionPane.showMessageDialog(this, "Has ganado el combate y te has convertido.", "¡Disfruta de tu botín!", JOptionPane.OK_OPTION);
+    }
+    
+    @Override
+    public void nextTurnNotAllowedMessage() {
+        JOptionPane.showMessageDialog(this, "Aún tienes un castigo pendiente.", "No puedes pasar de turno", JOptionPane.OK_OPTION);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
