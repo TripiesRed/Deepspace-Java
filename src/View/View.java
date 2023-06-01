@@ -22,7 +22,7 @@ public interface View {
   public void showView();
   public ArrayList<String> readNamePlayers();
 
-  public boolean confirmExitMessage();
+ // public boolean confirmExitMessage();
   public void lostCombatMessage();
   public void escapeMessage();
   public void wonCombatMessage();

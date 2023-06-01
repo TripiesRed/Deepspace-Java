@@ -199,10 +199,10 @@ public class MainWindow extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_SalirActionPerformed
 
     
-    @Override
+    /*@Override
     public boolean confirmExitMessage() {
         return (JOptionPane.showConfirmDialog(this, "¿Estás segur@ que deseas salir?", "Advertencia", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
-    }
+    }*/
 
     @Override
     public void lostCombatMessage() {

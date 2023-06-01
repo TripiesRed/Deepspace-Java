@@ -104,6 +104,7 @@ public class SpaceStationView extends javax.swing.JPanel {
 
         Daño.setBorder(javax.swing.BorderFactory.createTitledBorder("Castigo Pendiente"));
         Daño.setPreferredSize(new java.awt.Dimension(320, 135));
+        Daño.setLayout(new java.awt.BorderLayout());
 
         Armas.setName(""); // NOI18N
         Armas.setPreferredSize(new java.awt.Dimension(600, 120));

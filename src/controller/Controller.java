@@ -51,9 +51,9 @@ public class Controller {
     }
     
     public void finish (int i) {
-        if (view.confirmExitMessage()) {
+        //if (view.confirmExitMessage()) {
           System.exit(i);
-        }
+        //}
     }
       
     public boolean nextTurn () {

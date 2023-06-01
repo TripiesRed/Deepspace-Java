@@ -31,7 +31,11 @@ public class DamageView extends javax.swing.JPanel {
         else{
             
             Escudos.setText("Escudos: " + Integer.toString(d.getNShields()));
-            Armas.setText("Armas: " + d.getWeaponInfo());
+            
+            String wpInfo = d.getWeaponInfo();
+            if(wpInfo == null) wpInfo = Integer.toString(0);
+            
+            Armas.setText("Armas: " + wpInfo);
         }
         
         repaint();
