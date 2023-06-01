@@ -236,7 +236,7 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView {
     
     @Override
     public void nextTurnNotAllowedMessage() {
-        if(Controller.getInstance().getState() == GameState.INIT)
+        if(Controller.getInstance().getState() == GameState.INIT || Controller.getInstance().getState() == GameState.BEFORECOMBAT)
             JOptionPane.showMessageDialog(this, "Primero debes iniciar un combate", "No puedes pasar de turno", JOptionPane.OK_OPTION);
         else
             JOptionPane.showMessageDialog(this, "Aún tienes un castigo pendiente.", "No puedes pasar de turno", JOptionPane.OK_OPTION);
