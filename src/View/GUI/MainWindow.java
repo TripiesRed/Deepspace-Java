@@ -195,7 +195,11 @@ public class MainWindow extends javax.swing.JFrame implements View {
         // TODO add your handling code here:
         Controller.getInstance().finish(0);
     }//GEN-LAST:event_SalirActionPerformed
-
+    
+    @Override
+    public boolean confirmExitMessage() {
+        return (JOptionPane.showConfirmDialog(this, "¿Estás segur@ que deseas salir?", "Advertencia", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Combatir;
