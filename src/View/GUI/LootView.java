@@ -62,6 +62,7 @@ public class LootView extends javax.swing.JPanel {
         }
         
         repaint();
+        revalidate();
     }
 
     /**
@@ -81,7 +82,8 @@ public class LootView extends javax.swing.JPanel {
         Ciudad_Esp = new javax.swing.JLabel();
         Est_Efi = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Botín"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Botín", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Liberation Sans", 1, 15))); // NOI18N
+        setPreferredSize(new java.awt.Dimension(440, 182));
 
         Armas.setText("Armas:");
 

@@ -52,7 +52,6 @@ public class SpaceStationView extends javax.swing.JPanel {
         Hangar.add(hangar_view);
         Defensas.add(shields_view);
         Armas.add(weapons_view);
-        
         Daño.add(damage_view);
         
         
@@ -217,8 +216,8 @@ public class SpaceStationView extends javax.swing.JPanel {
         w = weapons_view.getSelectedBoxes();
         s = shields_view.getSelectedBoxes();
         
-        Controller.getInstance().discard(Controller.WEAPON, w, w);
-        Controller.getInstance().discard(Controller.SHIELD, s, s);
+        Controller.getInstance().discard(Controller.WEAPON, w, s);
+        Controller.getInstance().discard(Controller.SHIELD, w, s);
         
         ArrayList<Integer> wh, sh;
         wh = hangar_view.getSelectedBoxesWeapons();

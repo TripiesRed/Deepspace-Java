@@ -31,11 +31,7 @@ public class DamageView extends javax.swing.JPanel {
         else{
             
             Escudos.setText("Escudos: " + Integer.toString(d.getNShields()));
-            
-            String wpInfo = d.getWeaponInfo();
-            if(wpInfo == null) wpInfo = Integer.toString(0);
-            
-            Armas.setText("Armas: " + wpInfo);
+            Armas.setText("Armas: " + d.getWeaponInfo());
         }
         
         repaint();
@@ -53,6 +49,7 @@ public class DamageView extends javax.swing.JPanel {
         Escudos = new javax.swing.JLabel();
         Armas = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(400, 100));
         setPreferredSize(new java.awt.Dimension(308, 90));
 
         Escudos.setText("Escudos: ");

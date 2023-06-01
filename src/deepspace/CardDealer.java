@@ -200,7 +200,7 @@ class CardDealer {
         enemies.add(new EnemyStarShip("Enemigo normal 3",150,70,regularLoot0,regularSpecificDamage0));   
         enemies.add(new EnemyStarShip("Enemigo normal 3",150,70,regularLoot0,regularSpecificDamage0));
         enemies.add(new EnemyStarShip("Enemigo normal 3",150,70,regularLoot0,regularSpecificDamage0));        
-          
+        
         enemies.add(new EnemyStarShip("Enemigo difícil 0",200,100,goodLoot,hardSpecificDamage0));          
         enemies.add(new EnemyStarShip("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));   
         
